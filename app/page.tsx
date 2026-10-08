@@ -306,6 +306,15 @@ export default function Home() {
                   Research on secure distributed machine learning and collaboration
                   across heterogeneous compute environments.
                 </p>
+
+                <a
+                  href="https://www.sciencedirect.com/science/article/pii/S0167739X25001736"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-block text-sm font-semibold text-[#A45236] underline decoration-[#D9B49F] underline-offset-4 transition hover:text-[#7E3D2A]"
+                >
+                  Read paper ↗
+                </a>
               </article>
             </Reveal>
 
@@ -319,6 +328,15 @@ export default function Home() {
                   Representation learning for robotic grasp detection, accepted
                   at SPCOM 2020 with a poster accepted at WiCV @ CVPR 2020.
                 </p>
+
+                <a
+                  href="https://ieeexplore.ieee.org/document/9179578"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-block text-sm font-semibold text-[#4E7466] underline decoration-[#A9C2B8] underline-offset-4 transition hover:text-[#35584B]"
+                >
+                  Read paper ↗
+                </a>
               </article>
             </Reveal>
 
