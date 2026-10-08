@@ -37,11 +37,19 @@ export default function Home() {
         {/* PROFILE PANEL */}
         <aside className="h-fit rounded-[28px] border border-[#DECFC3] bg-[#FFF9F2] p-6 shadow-[0_20px_50px_rgba(70,48,35,0.08)] md:sticky md:top-8">
 
-          <img
-            src="/arya.jpg"
-            alt="Arya Krishnan"
-            className="h-24 w-24 rounded-2xl border border-[#DECFC3] object-cover shadow-sm"
-          />
+          <a
+            href="/arya.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-block"
+            title="Open photo"
+          >
+            <img
+              src="/arya.jpg"
+              alt="Arya Krishnan"
+              className="h-24 w-24 rounded-2xl border border-[#DECFC3] object-cover shadow-sm transition duration-300 group-hover:scale-[1.03] group-hover:shadow-md"
+            />
+          </a>
 
           <h1 className="mt-5 text-2xl font-semibold tracking-tight">
             Arya Krishnan
