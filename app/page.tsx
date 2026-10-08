@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import {
   ArrowUpRight,
   BookOpen,
@@ -8,626 +8,689 @@ import {
   BrainCircuit,
   CloudCog,
   Coffee,
-  Database,
   DatabaseZap,
   FileText,
+  Gamepad2,
   Mail,
   Network,
+  Plane,
   ServerCog,
 } from "lucide-react";
 
-function Reveal({
-  children,
-  delay = 0,
-}: {
-  children: ReactNode;
-  delay?: number;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+type Tab = "about" | "experience" | "research" | "writing";
 
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.unobserve(node);
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      }
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={`transition-all duration-700 ease-out ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-7 opacity-0"
-      }`}
-    >
-      {children}
-    </div>
-  );
-}
-
-const focusAreas = [
-  {
-    title: "Distributed Systems",
-    description:
-      "Reliable services, control planes, failure handling, observability, and systems that keep working when things go wrong.",
-    icon: ServerCog,
-  },
-  {
-    title: "Cloud & Networking",
-    description:
-      "Kubernetes, GKE, Cilium/eBPF, BGP, multi-cluster networking, and production cloud infrastructure.",
-    icon: Network,
-  },
-  {
-    title: "Backend & Data",
-    description:
-      "Microservices, streaming pipelines, CDC, data platforms, and backend systems operating at production scale.",
-    icon: Database,
-  },
-  {
-    title: "ML Infrastructure",
-    description:
-      "Distributed ML systems, developer tooling, data infrastructure, and the systems underneath model training and serving.",
-    icon: BrainCircuit,
-  },
-];
-
-/*
-  ADD YOUR GEEKSFORGEEKS ARTICLES HERE LATER.
-
-  Example:
-
-  {
-    title: "Your article title",
-    description: "One-line description.",
-    url: "https://www.geeksforgeeks.org/...",
-  },
-*/
-const writing: {
-  title: string;
-  description: string;
-  url: string;
-}[] = [
-  {
-    title: "Technical Writing on GeeksforGeeks",
-    description:
-      "Articles and explanations on computer science, programming, algorithms, and systems topics.",
-    url: "https://www.geeksforgeeks.org/profile/arya31?tab=articles",
-  },
+const tabs: { id: Tab; label: string }[] = [
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "research", label: "Research" },
+  { id: "writing", label: "Writing" },
 ];
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState<Tab>("about");
+
   return (
-    <main className="min-h-screen bg-[#FFF9F2] text-[#2A211B]">
+    <main className="min-h-screen bg-[#EFE6DC] px-4 py-8 text-[#2A211B] md:px-8 md:py-12">
 
-      {/* NAV */}
-      <nav className="sticky top-0 z-50 border-b border-[#E8D9CC]/80 bg-[#FFF9F2]/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-[260px_1fr]">
 
-          <a
-            href="#home"
-            className="text-lg font-semibold tracking-tight text-[#2A211B]"
-          >
+        {/* PROFILE PANEL */}
+        <aside className="h-fit rounded-[28px] border border-[#DECFC3] bg-[#FFF9F2] p-6 shadow-[0_20px_50px_rgba(70,48,35,0.08)] md:sticky md:top-8">
+
+          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#A45236] text-xl font-semibold text-white">
             AK
-          </a>
-
-          <div className="flex gap-5 text-sm font-medium text-[#6B594E] md:gap-7">
-            <a className="transition hover:text-[#A45236]" href="#experience">
-              Experience
-            </a>
-
-            <a className="transition hover:text-[#A45236]" href="#focus">
-              Focus
-            </a>
-
-            <a className="transition hover:text-[#A45236]" href="#writing">
-              Writing
-            </a>
-
-            <a className="transition hover:text-[#A45236]" href="#contact">
-              Contact
-            </a>
           </div>
 
-        </div>
-      </nav>
+          <h1 className="mt-5 text-2xl font-semibold tracking-tight">
+            Arya Krishnan
+          </h1>
 
-      {/* HOME */}
-      <section id="home" className="scroll-mt-24 border-b border-[#EADCCF]">
-        <div className="mx-auto max-w-5xl px-6 pb-20 pt-20 md:pb-24 md:pt-24">
+          <p className="mt-2 text-sm font-medium leading-6 text-[#A45236]">
+            Backend · Infrastructure · Distributed Systems
+          </p>
 
-          <Reveal>
-            <div className="mb-6 inline-flex rounded-full border border-[#D8C3B3] bg-[#FFF3E8] px-4 py-2 text-sm font-medium text-[#8C4D35]">
-              MSCS @ UMass Amherst · May 2027
+          <div className="my-6 h-px bg-[#E7D9CF]" />
+
+          <div className="space-y-4 text-sm leading-6 text-[#64544A]">
+
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#9B8577]">
+                Education
+              </p>
+              <p className="mt-1">MSCS @ UMass Amherst</p>
+              <p className="text-[#8B7669]">May 2027</p>
             </div>
 
-            <h1 className="max-w-4xl text-5xl font-semibold leading-[1.06] tracking-tight md:text-7xl">
-              Hi, I&apos;m Arya.
-            </h1>
-
-            <h2 className="mt-5 max-w-3xl text-2xl font-medium leading-snug text-[#A45236] md:text-3xl">
-              I build backend, infrastructure, and distributed systems.
-            </h2>
-
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-[#55473E]">
-              I&apos;ve worked on cloud networking at Google, platform
-              infrastructure at Rubrik, and backend and data systems at
-              Flipkart. I&apos;m especially drawn to hard systems problems where
-              reliability, scale, and the details underneath really matter.
-            </p>
-
-            <div className="mt-9 flex flex-wrap gap-3">
-
-              <a
-                href="/Arya_Krishnan_Resume.pdf"
-                target="_blank"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#A45236] px-5 py-3 font-medium text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#8E432D]"
-              >
-                <FileText size={17} />
-                Resume
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/arya-krishnan-9371b5181"
-                target="_blank"
-                className="inline-flex items-center gap-2 rounded-xl border border-[#CDB9AA] bg-white px-5 py-3 font-medium text-[#382E28] transition hover:-translate-y-0.5 hover:bg-[#FFF3E8]"
-              >
-                <span className="flex h-[18px] w-[18px] items-center justify-center rounded-sm bg-[#382E28] text-[10px] font-bold leading-none text-white">
-                  in
-                </span>
-                LinkedIn
-              </a>
-
-              <a
-                href="mailto:aryakrishnan2108@gmail.com"
-                className="inline-flex items-center gap-2 rounded-xl border border-[#CDB9AA] bg-white px-5 py-3 text-sm font-medium text-[#382E28] transition hover:-translate-y-0.5 hover:bg-[#FFF3E8]"
-              >
-                <Mail size={17} />
-                aryakrishnan2108@gmail.com
-              </a>
-
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#9B8577]">
+                Previously
+              </p>
+              <p className="mt-1">
+                Google · Rubrik · Flipkart
+              </p>
             </div>
-          </Reveal>
 
-          {/* RESEARCH ON FIRST PAGE */}
-          <Reveal delay={120}>
-            <div className="mt-20">
-
-              <div className="mb-7 flex items-end justify-between">
-                <div>
-                  <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#4E7466]">
-                    Research
-                  </p>
-
-                  <h2 className="text-2xl font-semibold tracking-tight">
-                    A little of what I explored before industry
-                  </h2>
-                </div>
-              </div>
-
-              <div className="grid gap-5 md:grid-cols-2">
-
-                <a
-                  href="https://www.sciencedirect.com/science/article/pii/S0167739X25001736"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group rounded-2xl border border-[#DECEC1] bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(79,56,42,0.08)]"
-                >
-                  <div className="flex items-start justify-between gap-4">
-
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FFF0E8] text-[#A45236]">
-                      <BrainCircuit size={20} />
-                    </div>
-
-                    <ArrowUpRight
-                      size={18}
-                      className="text-[#A58F81] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    />
-                  </div>
-
-                  <h3 className="mt-5 text-lg font-semibold">
-                    Hierarchical Federated Learning
-                  </h3>
-
-                  <p className="mt-3 leading-7 text-[#66564C]">
-                    Secure distributed learning across heterogeneous compute
-                    environments using hierarchical and personalized training.
-                  </p>
-
-                  <p className="mt-4 text-sm font-medium text-[#A45236]">
-                    Future Generation Computer Systems
-                  </p>
-                </a>
-
-                <a
-                  href="https://ieeexplore.ieee.org/document/9179578"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group rounded-2xl border border-[#DECEC1] bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(79,56,42,0.08)]"
-                >
-                  <div className="flex items-start justify-between gap-4">
-
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EDF4F0] text-[#4E7466]">
-                      <Boxes size={20} />
-                    </div>
-
-                    <ArrowUpRight
-                      size={18}
-                      className="text-[#A58F81] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    />
-                  </div>
-
-                  <h3 className="mt-5 text-lg font-semibold">
-                    Robotic Grasp Detection
-                  </h3>
-
-                  <p className="mt-3 leading-7 text-[#66564C]">
-                    Representation learning for robotic grasp detection using a
-                    vector-quantized manifold.
-                  </p>
-
-                  <p className="mt-4 text-sm font-medium text-[#4E7466]">
-                    SPCOM 2020 · WiCV @ CVPR 2020
-                  </p>
-                </a>
-
-              </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#9B8577]">
+                Location
+              </p>
+              <p className="mt-1">
+                Amherst, Massachusetts
+              </p>
             </div>
-          </Reveal>
 
-        </div>
-      </section>
-
-      {/* EXPERIENCE */}
-      <section
-        id="experience"
-        className="scroll-mt-20 mx-auto max-w-5xl px-6 py-20"
-      >
-
-        <Reveal>
-          <div className="mb-12">
-            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#A45236]">
-              Experience
-            </p>
-
-            <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
-              Building systems in production
-            </h2>
           </div>
-        </Reveal>
 
-        <div className="space-y-8">
+          <div className="my-6 h-px bg-[#E7D9CF]" />
 
-          {/* GOOGLE */}
-          <Reveal>
-            <article className="rounded-2xl border border-[#E4D5C9] bg-white p-7 shadow-[0_8px_30px_rgba(79,56,42,0.05)] md:p-9">
+          <div className="space-y-3">
 
-              <div className="flex flex-wrap items-start justify-between gap-4">
+            <a
+              href="/Arya_Krishnan_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 rounded-xl bg-[#A45236] px-4 py-3 text-sm font-medium text-white transition hover:bg-[#8F432E]"
+            >
+              <FileText size={17} />
+              Resume
+            </a>
 
-                <div className="flex gap-4">
+            <a
+              href="mailto:aryakrishnan2108@gmail.com"
+              className="flex items-center gap-3 rounded-xl border border-[#D8C6B8] bg-white px-4 py-3 text-xs font-medium text-[#493A31] transition hover:bg-[#FFF2E8]"
+            >
+              <Mail size={16} className="shrink-0" />
+              aryakrishnan2108@gmail.com
+            </a>
 
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#EDF4F0] text-[#416657]">
-                    <CloudCog size={24} strokeWidth={1.8} />
-                  </div>
+            <a
+              href="mailto:aryakrishnan@umass.edu"
+              className="flex items-center gap-3 rounded-xl border border-[#D8C6B8] bg-white px-4 py-3 text-xs font-medium text-[#493A31] transition hover:bg-[#FFF2E8]"
+            >
+              <Mail size={16} className="shrink-0" />
+              aryakrishnan@umass.edu
+            </a>
 
-                  <div>
-                    <h3 className="text-2xl font-semibold">Google</h3>
+            <a
+              href="https://www.linkedin.com/in/arya-krishnan-9371b5181"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 rounded-xl border border-[#D8C6B8] bg-white px-4 py-3 text-sm font-medium text-[#493A31] transition hover:bg-[#FFF2E8]"
+            >
+              <span className="flex h-[17px] w-[17px] items-center justify-center rounded-sm bg-[#493A31] text-[9px] font-bold text-white">
+                in
+              </span>
+              LinkedIn
+            </a>
 
-                    <p className="mt-1 font-medium text-[#4E7466]">
-                      Software Engineer · Cloud Networking
-                    </p>
-                  </div>
+          </div>
 
-                </div>
+          <div className="mt-7 flex items-center gap-2 text-sm text-[#8C7567]">
+            <Coffee size={17} />
+            Always happy to chat.
+          </div>
 
-                <span className="rounded-full bg-[#EDF4F0] px-3 py-1 text-sm text-[#416657]">
-                  Jul 2024 – Aug 2025
-                </span>
+        </aside>
 
-              </div>
+        {/* MAIN WINDOW */}
+        <section className="overflow-hidden rounded-[28px] border border-[#DECFC3] bg-[#FFF9F2] shadow-[0_20px_50px_rgba(70,48,35,0.08)]">
 
-              <p className="mt-6 max-w-3xl text-[17px] leading-8 text-[#594C43]">
-                Built and operated networking infrastructure for Google
-                Distributed Cloud Hosted using Kubernetes, Cilium/eBPF, BGP,
-                ClusterMesh, VXLAN, VRFs, and IP tunneling.
-              </p>
+          {/* WINDOW BAR */}
+          <div className="flex flex-col gap-4 border-b border-[#E5D6CA] px-6 py-5 md:flex-row md:items-center md:justify-between">
 
-              <p className="mt-4 max-w-3xl text-[17px] leading-8 text-[#594C43]">
-                Debugged production incidents spanning routing, MTU, DNS, TLS,
-                pod IP exhaustion, and service reachability, and built
-                observability around control-plane and dataplane reliability.
-              </p>
-
-              <p className="mt-6 text-sm font-medium leading-7 text-[#887569]">
-                Go · Python · Kubernetes · GKE · Cilium · eBPF · BGP · Hubble · Grafana · GCP
-              </p>
-
-            </article>
-          </Reveal>
-
-          {/* RUBRIK */}
-          <Reveal delay={80}>
-            <article className="rounded-2xl border border-[#E4D5C9] bg-white p-7 shadow-[0_8px_30px_rgba(79,56,42,0.05)] md:p-9">
-
-              <div className="flex flex-wrap items-start justify-between gap-4">
-
-                <div className="flex gap-4">
-
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#FFF0E8] text-[#A45236]">
-                    <Boxes size={24} strokeWidth={1.8} />
-                  </div>
-
-                  <div>
-                    <h3 className="text-2xl font-semibold">Rubrik</h3>
-
-                    <p className="mt-1 font-medium text-[#A45236]">
-                      Software Engineer Intern · Platform Infrastructure
-                    </p>
-                  </div>
-
-                </div>
-
-                <span className="rounded-full bg-[#FFF0E8] px-3 py-1 text-sm text-[#8E432D]">
-                  May 2026 – Aug 2026
-                </span>
-
-              </div>
-
-              <p className="mt-6 max-w-3xl text-[17px] leading-8 text-[#594C43]">
-                Standardized infrastructure dependencies, resources, and runtime
-                configuration across roughly 200 distributed services in Rubrik
-                Security Cloud.
-              </p>
-
-              <p className="mt-4 max-w-3xl text-[17px] leading-8 text-[#594C43]">
-                Built AI-assisted platform tooling with Claude Code for service
-                analysis, code generation, validation, and migrations.
-              </p>
-
-              <p className="mt-6 text-sm font-medium leading-7 text-[#887569]">
-                Go · Python · Kubernetes · gRPC · Bazel · GCP · Claude Code
-              </p>
-
-            </article>
-          </Reveal>
-
-          {/* FLIPKART */}
-          <Reveal delay={140}>
-            <article className="rounded-2xl border border-[#E4D5C9] bg-white p-7 shadow-[0_8px_30px_rgba(79,56,42,0.05)] md:p-9">
-
-              <div className="flex flex-wrap items-start justify-between gap-4">
-
-                <div className="flex gap-4">
-
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#F2ECDD] text-[#7A673B]">
-                    <DatabaseZap size={24} strokeWidth={1.8} />
-                  </div>
-
-                  <div>
-                    <h3 className="text-2xl font-semibold">Flipkart</h3>
-
-                    <p className="mt-1 font-medium text-[#7A673B]">
-                      Intern → SDE-1 → SDE-2 · Backend & Data Systems
-                    </p>
-                  </div>
-
-                </div>
-
-                <span className="rounded-full bg-[#F2ECDD] px-3 py-1 text-sm text-[#67562F]">
-                  Jan 2022 – Jul 2024
-                </span>
-
-              </div>
-
-              <p className="mt-6 max-w-3xl text-[17px] leading-8 text-[#594C43]">
-                Built CDC streaming pipelines and designed and owned a
-                microservices-based marketplace catalog service that scaled to
-                roughly 9K RPM.
-              </p>
-
-              <p className="mt-4 max-w-3xl text-[17px] leading-8 text-[#594C43]">
-                This is where I first became drawn to infrastructure-heavy work
-                and learned to own production systems end to end.
-              </p>
-
-              <p className="mt-6 text-sm font-medium leading-7 text-[#887569]">
-                Java · GCP · GKE · Kafka · BigQuery · Pub/Sub · Dataflow · Debezium · Terraform · MySQL · Elasticsearch
-              </p>
-
-            </article>
-          </Reveal>
-
-        </div>
-      </section>
-
-      {/* FOCUS AREAS */}
-      <section id="focus" className="scroll-mt-20 bg-[#F5EEE5]">
-        <div className="mx-auto max-w-5xl px-6 py-20">
-
-          <Reveal>
-            <div className="mb-12">
-              <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#4E7466]">
-                Focus
-              </p>
-
-              <h2 className="text-3xl font-semibold tracking-tight">
-                What I like building
-              </h2>
+            <div className="flex gap-2">
+              <div className="h-3 w-3 rounded-full bg-[#C8725A]" />
+              <div className="h-3 w-3 rounded-full bg-[#D4A55E]" />
+              <div className="h-3 w-3 rounded-full bg-[#7A9A87]" />
             </div>
-          </Reveal>
 
-          <div className="grid gap-5 md:grid-cols-2">
+            <nav className="flex flex-wrap gap-2">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`rounded-xl px-4 py-2 text-sm font-medium transition ${
+                    activeTab === tab.id
+                      ? "bg-[#A45236] text-white"
+                      : "text-[#756055] hover:bg-[#F4E9DF]"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </nav>
 
-            {focusAreas.map((area, index) => {
-              const Icon = area.icon;
+          </div>
 
-              return (
-                <Reveal key={area.title} delay={index * 70}>
-                  <article className="h-full rounded-2xl border border-[#DECEC1] bg-[#FFFDF9] p-7">
+          <div className="min-h-[680px] p-7 md:p-10">
 
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#FFF0E8] text-[#A45236]">
-                      <Icon size={22} strokeWidth={1.8} />
+            {/* ABOUT */}
+            {activeTab === "about" && (
+              <div className="animate-fade">
+
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#A45236]">
+                  Hello
+                </p>
+
+                <h2 className="mt-3 max-w-3xl text-4xl font-semibold leading-tight tracking-tight md:text-5xl">
+                  I like building systems where the details underneath really matter.
+                </h2>
+
+                <p className="mt-6 max-w-3xl text-lg leading-8 text-[#5D4D43]">
+                  I&apos;ve worked on cloud networking at Google, platform
+                  infrastructure at Rubrik, and backend and data systems at
+                  Flipkart. I&apos;m especially drawn to problems around
+                  reliability, distributed systems, infrastructure, and the
+                  software layers that other engineers depend on.
+                </p>
+
+                {/* ABOUT ME */}
+                <div className="mt-10 rounded-2xl border border-[#E2D3C8] bg-white p-6 md:p-7">
+
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#4E7466]">
+                    A little about me
+                  </p>
+
+                  <p className="mt-4 max-w-3xl leading-7 text-[#625249]">
+                    I started my career building backend and data systems at
+                    Flipkart, then found myself getting increasingly curious
+                    about what happens underneath the application layer. That
+                    curiosity took me into cloud networking at Google and
+                    platform infrastructure at Rubrik, and eventually back to
+                    school at UMass to spend more time exploring distributed
+                    systems, security, and ML infrastructure.
+                  </p>
+
+                  <p className="mt-4 max-w-3xl leading-7 text-[#625249]">
+                    Outside of engineering, I love traveling, wandering into
+                    new cafés, and getting far too invested in video games.
+                    I think I like exploring cities for roughly the same reason
+                    I like exploring systems: there&apos;s always another layer
+                    underneath the obvious one.
+                  </p>
+
+                  <div className="mt-6 flex flex-wrap gap-3">
+
+                    <div className="inline-flex items-center gap-2 rounded-full bg-[#FFF1E7] px-4 py-2 text-sm font-medium text-[#8E4B35]">
+                      <Plane size={16} />
+                      Traveling
+                    </div>
+
+                    <div className="inline-flex items-center gap-2 rounded-full bg-[#F3EBE0] px-4 py-2 text-sm font-medium text-[#735A42]">
+                      <Coffee size={16} />
+                      Exploring cafés
+                    </div>
+
+                    <div className="inline-flex items-center gap-2 rounded-full bg-[#EDF4F0] px-4 py-2 text-sm font-medium text-[#416657]">
+                      <Gamepad2 size={16} />
+                      Video games
+                    </div>
+
+                  </div>
+
+                </div>
+
+                {/* FOCUS */}
+                <div className="mt-10">
+
+                  <p className="mb-5 text-sm font-semibold uppercase tracking-[0.18em] text-[#A45236]">
+                    I tend to gravitate toward
+                  </p>
+
+                  <div className="grid gap-4 md:grid-cols-2">
+
+                    <div className="rounded-2xl border border-[#E2D3C8] bg-[#FFFDF9] p-5">
+                      <ServerCog size={20} className="text-[#A45236]" />
+                      <h3 className="mt-3 font-semibold">
+                        Distributed Systems
+                      </h3>
+                      <p className="mt-2 text-sm leading-6 text-[#716056]">
+                        Reliability, observability, failure handling, and
+                        systems that keep working when things go wrong.
+                      </p>
+                    </div>
+
+                    <div className="rounded-2xl border border-[#E2D3C8] bg-[#FFFDF9] p-5">
+                      <Network size={20} className="text-[#4E7466]" />
+                      <h3 className="mt-3 font-semibold">
+                        Cloud & Networking
+                      </h3>
+                      <p className="mt-2 text-sm leading-6 text-[#716056]">
+                        Kubernetes, networking, cloud infrastructure, and the
+                        layers connecting distributed services.
+                      </p>
+                    </div>
+
+                    <div className="rounded-2xl border border-[#E2D3C8] bg-[#FFFDF9] p-5">
+                      <DatabaseZap size={20} className="text-[#7A673B]" />
+                      <h3 className="mt-3 font-semibold">
+                        Backend & Data
+                      </h3>
+                      <p className="mt-2 text-sm leading-6 text-[#716056]">
+                        Microservices, streaming systems, CDC, and production
+                        data infrastructure.
+                      </p>
+                    </div>
+
+                    <div className="rounded-2xl border border-[#E2D3C8] bg-[#FFFDF9] p-5">
+                      <BrainCircuit size={20} className="text-[#A45236]" />
+                      <h3 className="mt-3 font-semibold">
+                        ML Infrastructure
+                      </h3>
+                      <p className="mt-2 text-sm leading-6 text-[#716056]">
+                        Distributed ML systems, developer tooling, and the
+                        infrastructure underneath AI workloads.
+                      </p>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                {/* ACADEMIC INTERESTS */}
+                <div className="mt-12">
+
+                  <div className="mb-5 flex items-end justify-between gap-4">
+
+                    <div>
+                      <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#4E7466]">
+                        Academic interests
+                      </p>
+
+                      <h3 className="mt-2 text-xl font-semibold">
+                        A few ideas I&apos;ve enjoyed exploring academically.
+                      </h3>
+                    </div>
+
+                    <button
+                      onClick={() => setActiveTab("research")}
+                      className="shrink-0 text-sm font-medium text-[#A45236] hover:underline"
+                    >
+                      View all →
+                    </button>
+
+                  </div>
+
+                  <div className="grid gap-4 md:grid-cols-2">
+
+                    <a
+                      href="https://www.sciencedirect.com/science/article/pii/S0167739X25001736"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group rounded-2xl border border-[#E2D3C8] bg-[#FFFDF9] p-5 transition hover:-translate-y-1"
+                    >
+
+                      <div className="flex justify-between gap-4">
+                        <BrainCircuit className="text-[#A45236]" size={21} />
+                        <ArrowUpRight size={17} className="text-[#A69082]" />
+                      </div>
+
+                      <h3 className="mt-4 font-semibold">
+                        Hierarchical Federated Learning
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-6 text-[#716056]">
+                        Distributed ML across heterogeneous compute environments.
+                      </p>
+
+                    </a>
+
+                    <a
+                      href="https://ieeexplore.ieee.org/document/9179578"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group rounded-2xl border border-[#E2D3C8] bg-[#FFFDF9] p-5 transition hover:-translate-y-1"
+                    >
+
+                      <div className="flex justify-between gap-4">
+                        <Boxes className="text-[#4E7466]" size={21} />
+                        <ArrowUpRight size={17} className="text-[#A69082]" />
+                      </div>
+
+                      <h3 className="mt-4 font-semibold">
+                        Robotic Grasp Detection
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-6 text-[#716056]">
+                        Representation learning for robotic grasp detection.
+                      </p>
+
+                    </a>
+
+                  </div>
+                </div>
+
+              </div>
+            )}
+
+            {/* EXPERIENCE */}
+            {activeTab === "experience" && (
+              <div className="animate-fade">
+
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#A45236]">
+                  Experience
+                </p>
+
+                <h2 className="mt-3 text-3xl font-semibold tracking-tight">
+                  Systems I&apos;ve helped build
+                </h2>
+
+                <div className="mt-9 space-y-5">
+
+                  {/* GOOGLE */}
+                  <div className="rounded-2xl border border-[#E2D3C8] bg-white p-6">
+
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+
+                      <div className="flex gap-4">
+
+                        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#EDF4F0] text-[#416657]">
+                          <CloudCog size={22} />
+                        </div>
+
+                        <div>
+                          <h3 className="text-xl font-semibold">
+                            Google
+                          </h3>
+
+                          <p className="text-sm font-medium text-[#4E7466]">
+                            Software Engineer · Cloud Networking
+                          </p>
+                        </div>
+
+                      </div>
+
+                      <span className="text-sm text-[#8B776A]">
+                        2024 – 2025
+                      </span>
+
+                    </div>
+
+                    <p className="mt-5 leading-7 text-[#625249]">
+                      Built and operated networking infrastructure for Google
+                      Distributed Cloud Hosted using Kubernetes, Cilium/eBPF,
+                      BGP, ClusterMesh, VXLAN, VRFs, and IP tunneling.
+                    </p>
+
+                    <p className="mt-3 leading-7 text-[#625249]">
+                      Debugged production issues spanning routing, MTU, DNS,
+                      TLS, pod IP exhaustion, and service reachability, and
+                      built observability around control-plane and dataplane
+                      reliability.
+                    </p>
+
+                    <p className="mt-4 text-sm leading-6 text-[#8B776A]">
+                      Go · Python · Kubernetes · GKE · Cilium · eBPF · BGP · Hubble · Grafana · GCP
+                    </p>
+
+                  </div>
+
+                  {/* RUBRIK */}
+                  <div className="rounded-2xl border border-[#E2D3C8] bg-white p-6">
+
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+
+                      <div className="flex gap-4">
+
+                        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#FFF0E8] text-[#A45236]">
+                          <Boxes size={22} />
+                        </div>
+
+                        <div>
+                          <h3 className="text-xl font-semibold">
+                            Rubrik
+                          </h3>
+
+                          <p className="text-sm font-medium text-[#A45236]">
+                            Software Engineer Intern · Platform Infrastructure
+                          </p>
+                        </div>
+
+                      </div>
+
+                      <span className="text-sm text-[#8B776A]">
+                        2026
+                      </span>
+
+                    </div>
+
+                    <p className="mt-5 leading-7 text-[#625249]">
+                      Standardized infrastructure dependencies, resources, and
+                      runtime configuration across roughly 200 distributed
+                      services in Rubrik Security Cloud.
+                    </p>
+
+                    <p className="mt-3 leading-7 text-[#625249]">
+                      Built AI-assisted platform tooling with Claude Code for
+                      service analysis, code generation, validation, and
+                      migrations.
+                    </p>
+
+                    <p className="mt-4 text-sm leading-6 text-[#8B776A]">
+                      Go · Python · Kubernetes · gRPC · Bazel · GCP · Claude Code
+                    </p>
+
+                  </div>
+
+                  {/* FLIPKART */}
+                  <div className="rounded-2xl border border-[#E2D3C8] bg-white p-6">
+
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+
+                      <div className="flex gap-4">
+
+                        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#F2ECDD] text-[#7A673B]">
+                          <DatabaseZap size={22} />
+                        </div>
+
+                        <div>
+                          <h3 className="text-xl font-semibold">
+                            Flipkart
+                          </h3>
+
+                          <p className="text-sm font-medium text-[#7A673B]">
+                            Intern → SDE-1 → SDE-2 · Backend & Data Systems
+                          </p>
+                        </div>
+
+                      </div>
+
+                      <span className="text-sm text-[#8B776A]">
+                        2022 – 2024
+                      </span>
+
+                    </div>
+
+                    <p className="mt-5 leading-7 text-[#625249]">
+                      Built CDC streaming pipelines and owned a
+                      microservices-based marketplace catalog service scaling
+                      to roughly 9K RPM.
+                    </p>
+
+                    <p className="mt-3 leading-7 text-[#625249]">
+                      This is where I first became drawn to
+                      infrastructure-heavy work and learned to own production
+                      systems end to end.
+                    </p>
+
+                    <p className="mt-4 text-sm leading-6 text-[#8B776A]">
+                      Java · GCP · GKE · Kafka · BigQuery · Pub/Sub · Dataflow · Debezium · Terraform
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+            )}
+
+            {/* RESEARCH */}
+            {activeTab === "research" && (
+              <div className="animate-fade">
+
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#4E7466]">
+                  Academic interests
+                </p>
+
+                <h2 className="mt-3 text-3xl font-semibold tracking-tight">
+                  A few ideas I&apos;ve enjoyed exploring academically.
+                </h2>
+
+                <p className="mt-4 max-w-2xl leading-7 text-[#625249]">
+                  My academic work has mostly lived at the intersection of
+                  machine learning, distributed computation, and representation
+                  learning.
+                </p>
+
+                <div className="mt-9 grid gap-5 md:grid-cols-2">
+
+                  <a
+                    href="https://www.sciencedirect.com/science/article/pii/S0167739X25001736"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group rounded-2xl border border-[#E2D3C8] bg-white p-6 transition hover:-translate-y-1"
+                  >
+
+                    <div className="flex justify-between">
+
+                      <BrainCircuit
+                        size={23}
+                        className="text-[#A45236]"
+                      />
+
+                      <ArrowUpRight
+                        size={18}
+                        className="text-[#A69082]"
+                      />
+
                     </div>
 
                     <h3 className="mt-5 text-xl font-semibold">
-                      {area.title}
+                      Hierarchical Federated Learning
                     </h3>
 
-                    <p className="mt-3 leading-7 text-[#64544A]">
-                      {area.description}
+                    <p className="mt-3 leading-7 text-[#625249]">
+                      Secure distributed learning across heterogeneous compute
+                      environments using hierarchical and personalized
+                      training.
                     </p>
 
-                  </article>
-                </Reveal>
-              );
-            })}
+                    <p className="mt-5 text-sm font-medium text-[#A45236]">
+                      Future Generation Computer Systems ↗
+                    </p>
 
-          </div>
-        </div>
-      </section>
+                  </a>
 
-      {/* WRITING / BLOG */}
-      <section
-        id="writing"
-        className="scroll-mt-20 mx-auto max-w-5xl px-6 py-20"
-      >
+                  <a
+                    href="https://ieeexplore.ieee.org/document/9179578"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group rounded-2xl border border-[#E2D3C8] bg-white p-6 transition hover:-translate-y-1"
+                  >
 
-        <Reveal>
-          <div className="mb-10">
+                    <div className="flex justify-between">
 
-            <div className="mb-3 flex items-center gap-3 text-[#A45236]">
-              <BookOpen size={21} />
-              <p className="text-sm font-semibold uppercase tracking-[0.2em]">
-                Writing
-              </p>
-            </div>
+                      <Boxes
+                        size={23}
+                        className="text-[#4E7466]"
+                      />
 
-            <h2 className="text-3xl font-semibold tracking-tight">
-              Notes, explanations & technical writing
-            </h2>
+                      <ArrowUpRight
+                        size={18}
+                        className="text-[#A69082]"
+                      />
 
-            <p className="mt-4 max-w-2xl leading-7 text-[#64544A]">
-              I&apos;ve also spent time writing about computer science and
-              explaining technical ideas on GeeksforGeeks. I&apos;ll collect a
-              few of my favorite pieces here.
-            </p>
+                    </div>
 
-          </div>
-        </Reveal>
-
-        {writing.length > 0 ? (
-          <div className="grid gap-5 md:grid-cols-2">
-
-            {writing.map((article, index) => (
-              <Reveal key={article.url} delay={index * 70}>
-
-                <a
-                  href={article.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block h-full rounded-2xl border border-[#E4D5C9] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(79,56,42,0.08)]"
-                >
-                  <div className="flex items-start justify-between gap-5">
-
-                    <h3 className="text-lg font-semibold">
-                      {article.title}
+                    <h3 className="mt-5 text-xl font-semibold">
+                      Robotic Grasp Detection
                     </h3>
 
+                    <p className="mt-3 leading-7 text-[#625249]">
+                      Representation learning for robotic grasp detection in a
+                      vector-quantized manifold.
+                    </p>
+
+                    <p className="mt-5 text-sm font-medium text-[#4E7466]">
+                      SPCOM 2020 · WiCV @ CVPR 2020 ↗
+                    </p>
+
+                  </a>
+
+                </div>
+
+              </div>
+            )}
+
+            {/* WRITING */}
+            {activeTab === "writing" && (
+              <div className="animate-fade">
+
+                <div className="flex items-center gap-3 text-[#A45236]">
+                  <BookOpen size={21} />
+
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em]">
+                    Writing
+                  </p>
+                </div>
+
+                <h2 className="mt-3 text-3xl font-semibold tracking-tight">
+                  Technical writing
+                </h2>
+
+                <p className="mt-5 max-w-2xl leading-7 text-[#625249]">
+                  I&apos;ve also spent time writing and explaining computer
+                  science topics. I like breaking technical ideas down until
+                  they feel intuitive rather than intimidating.
+                </p>
+
+                <a
+                  href="https://www.geeksforgeeks.org/profile/arya31?tab=articles"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group mt-9 block rounded-2xl border border-[#E2D3C8] bg-white p-6 transition hover:-translate-y-1"
+                >
+
+                  <div className="flex items-start justify-between gap-5">
+
+                    <div>
+
+                      <p className="text-sm font-medium text-[#4E7466]">
+                        GeeksforGeeks
+                      </p>
+
+                      <h3 className="mt-2 text-xl font-semibold">
+                        Articles & technical explanations
+                      </h3>
+
+                    </div>
+
                     <ArrowUpRight
-                      size={18}
-                      className="shrink-0 text-[#A58F81] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      size={19}
+                      className="text-[#A69082]"
                     />
 
                   </div>
 
-                  <p className="mt-3 leading-7 text-[#64544A]">
-                    {article.description}
+                  <p className="mt-4 max-w-xl leading-7 text-[#625249]">
+                    Programming, algorithms, computer science concepts, and
+                    practical technical explanations.
                   </p>
 
                   <p className="mt-5 text-sm font-medium text-[#A45236]">
-                    GeeksforGeeks
+                    Browse my articles →
                   </p>
 
                 </a>
 
-              </Reveal>
-            ))}
+              </div>
+            )}
 
           </div>
-        ) : (
-          <Reveal>
-            <div className="rounded-2xl border border-dashed border-[#D4C0B1] bg-[#FFF6ED] p-7">
 
-              <p className="font-medium text-[#5A473B]">
-                GeeksforGeeks articles coming here next.
-              </p>
+        </section>
 
-              <p className="mt-2 text-sm leading-6 text-[#806C5E]">
-                We&apos;ll add your actual article titles and links here instead
-                of filling this section with generic placeholders.
-              </p>
-
-            </div>
-          </Reveal>
-        )}
-
-      </section>
-
-      {/* CONTACT */}
-      <section id="contact" className="scroll-mt-20 bg-[#243B33] text-[#FFF9F2]">
-        <div className="mx-auto max-w-5xl px-6 py-20">
-
-          <Reveal>
-
-            <div className="mb-4 flex items-center gap-3 text-[#D9B49F]">
-              <Coffee size={24} strokeWidth={1.7} />
-
-              <p className="text-sm font-semibold uppercase tracking-[0.2em]">
-                Coffee & conversation
-              </p>
-            </div>
-
-            <h2 className="max-w-3xl text-3xl font-semibold leading-tight md:text-4xl">
-              Always happy to talk about systems, infrastructure, or an
-              interesting engineering problem.
-            </h2>
-
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-[#D9E2DD]">
-              I graduate from UMass Amherst in May 2027 and am interested in
-              backend, platform, distributed systems, data infrastructure, and
-              ML infrastructure opportunities.
-            </p>
-
-            <div className="mt-8 flex flex-col gap-3">
-
-              <a
-                href="mailto:aryakrishnan2108@gmail.com"
-                className="inline-flex items-center gap-3 text-lg font-medium underline decoration-[#D9B49F] underline-offset-4"
-              >
-                <Mail size={19} />
-                aryakrishnan2108@gmail.com
-              </a>
-
-            </div>
-
-          </Reveal>
-        </div>
-      </section>
+      </div>
 
     </main>
   );
