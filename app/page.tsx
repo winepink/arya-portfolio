@@ -51,9 +51,14 @@ export default function Home() {
             />
           </a>
 
-          <h1 className="mt-5 text-2xl font-semibold tracking-tight">
-            Arya Krishnan
-          </h1>
+          <div className="mt-5 flex items-baseline gap-2">
+            <h1 className="text-2xl font-semibold tracking-tight">
+              Arya Krishnan
+            </h1>
+            <span className="text-sm font-medium text-[#9B8577]">
+              she/her
+            </span>
+          </div>
 
           <p className="mt-2 text-sm font-medium leading-6 text-[#A45236]">
             Backend · Infrastructure · Distributed Systems
@@ -76,7 +81,7 @@ export default function Home() {
                 Previously
               </p>
               <p className="mt-1">
-                Google · Rubrik · Flipkart
+                Google · Rubrik · Flipkart (Walmart Group)
               </p>
             </div>
 
