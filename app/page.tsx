@@ -37,9 +37,11 @@ export default function Home() {
         {/* PROFILE PANEL */}
         <aside className="h-fit rounded-[28px] border border-[#DECFC3] bg-[#FFF9F2] p-6 shadow-[0_20px_50px_rgba(70,48,35,0.08)] md:sticky md:top-8">
 
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#A45236] text-xl font-semibold text-white">
-            AK
-          </div>
+          <img
+            src="/arya.jpg"
+            alt="Arya Krishnan"
+            className="h-24 w-24 rounded-2xl border border-[#DECFC3] object-cover shadow-sm"
+          />
 
           <h1 className="mt-5 text-2xl font-semibold tracking-tight">
             Arya Krishnan
