@@ -48,3 +48,230 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* === FULLSCREEN PORTFOLIO PATCH === */
+
+/* ---------- overall readability ---------- */
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #2A211B;
+}
+
+/* The site was reading too light. */
+body :is(h1, h2, h3, h4, strong) {
+  color: #2A211B;
+}
+
+/* Keep secondary copy readable instead of washed out. */
+main p,
+aside p {
+  color: #5B5048;
+}
+
+/* ---------- use the full screen ---------- */
+
+/* outer application wrapper */
+body > div:first-child {
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  padding: 14px !important;
+}
+
+/* sidebar + right-window layout */
+body > div:first-child > div:first-child {
+  width: 100% !important;
+  max-width: none !important;
+  min-height: calc(100vh - 28px) !important;
+  margin: 0 !important;
+}
+
+main {
+  flex: 1 1 0% !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+}
+
+
+#experience-timeline {
+  scroll-margin-top: 2rem;
+}
+
+/* ---------- INTERESTS ---------- */
+
+/*
+  Reference-site idea:
+  compact 2-column "what I work on" cards,
+  translated into your cream / terracotta / sage visual system.
+
+  Supports either an existing #interests section OR the section
+  directly after the experience timeline.
+*/
+:is(
+  #interests,
+  #experience-timeline + section
+) {
+  margin-top: clamp(3rem, 5vw, 5rem) !important;
+  padding-top: clamp(2.5rem, 4vw, 4rem) !important;
+  border-top: 1px solid rgba(164, 82, 54, 0.14);
+}
+
+:is(
+  #interests,
+  #experience-timeline + section
+) [class*="grid"] {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 1rem !important;
+  max-width: none !important;
+}
+
+:is(
+  #interests,
+  #experience-timeline + section
+) [class*="grid"] > * {
+  min-height: 145px;
+
+  padding: 1.4rem 1.5rem !important;
+
+  border: 1px solid rgba(164, 82, 54, 0.18) !important;
+  border-radius: 18px !important;
+
+  background: rgba(255, 249, 242, 0.78) !important;
+
+  box-shadow:
+    0 8px 25px rgba(42, 33, 27, 0.035) !important;
+
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease;
+}
+
+:is(
+  #interests,
+  #experience-timeline + section
+) [class*="grid"] > *:hover {
+  transform: translateY(-2px);
+  border-color: rgba(164, 82, 54, 0.30) !important;
+
+  box-shadow:
+    0 12px 30px rgba(42, 33, 27, 0.065) !important;
+}
+
+:is(
+  #interests,
+  #experience-timeline + section
+) h3 {
+  font-weight: 700 !important;
+  color: #2A211B !important;
+}
+
+:is(
+  #interests,
+  #experience-timeline + section
+) svg {
+  color: #4E7466;
+}
+
+
+/* ---------- desktop ---------- */
+
+@media (min-width: 1024px) {
+
+  /*
+    Preserve sidebar, but don't let it eat the whole viewport.
+    Right panel gets everything else.
+  */
+  body > div:first-child > div:first-child {
+    grid-template-columns:
+      minmax(280px, 305px)
+      minmax(0, 1fr) !important;
+
+    gap: 16px !important;
+  }
+
+}
+
+
+/* ---------- tablet/mobile ---------- */
+
+@media (max-width: 1023px) {
+
+  body > div:first-child {
+    padding: 10px !important;
+  }
+
+  main {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  :is(
+    #interests,
+    #experience-timeline + section
+  ) [class*="grid"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+
+/* === END FULLSCREEN PORTFOLIO PATCH === */
+
+
+
+
+
+/* Make normal copy actually readable. */
+body {
+  color: #2A211B !important;
+}
+
+main p,
+aside p {
+  color: #574B43;
+}
+
+/* === EXPERIENCE LOGO FIX === */
+
+/* Company logos are icons, never content images. */
+#experience-timeline img {
+  width: 42px !important;
+  height: 42px !important;
+  max-width: 42px !important;
+  max-height: 42px !important;
+
+  object-fit: contain !important;
+  object-position: center !important;
+
+  flex: 0 0 42px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Keep logo + company name together rather than letting the logo
+   create a giant row. */
+#experience-timeline img + * {
+  margin-top: 0 !important;
+}
+
+/* Experience cards should size to their actual content. */
+#experience-timeline article,
+#experience-timeline [class*="card"] {
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+/* === END EXPERIENCE LOGO FIX === */
