@@ -359,10 +359,27 @@ export default function Home() {
                       <div className="group rounded-2xl border border-[#E2D3C8] bg-[#FFFDF9] p-5 transition hover:-translate-y-1">
 
 
-                      <div className="flex justify-between gap-4">
+                      <div className="relative flex justify-between gap-4">
+                    <a
+                      href="https://ieeexplore.ieee.org/document/9179578"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute inset-0 z-0 rounded-2xl"
+                      aria-label="Read Robotic Grasp Detection paper"
+                    />
+
                         <Boxes className="text-[#4E7466]" size={21} />
                         <ArrowUpRight size={17} className="text-[#A69082]" />
-                      </div>
+                      
+                    <a
+                      href="https://sites.google.com/view/wicvworkshop-cvpr2020/program/poster-presentations"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative z-10 mt-4 inline-block text-sm font-semibold text-[#A45236] transition hover:opacity-70"
+                    >
+                      Women in Computer Vision @ CVPR 2020 · Poster ↗
+                    </a>
+                  </div>
 
                       <h3 className="mt-4 font-semibold">
                         Robotic Grasp Detection
