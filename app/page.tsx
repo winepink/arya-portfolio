@@ -740,7 +740,7 @@ export default function Home() {
                     </p>
 
                     <p className="mt-5 text-sm font-medium text-[#4E7466]">
-                      SPCOM 2020 · WiCV @ CVPR 2020 — Poster ↗
+                      WiCV @ CVPR 2020 — Poster ↗
                     </p>
 
                   </a>
