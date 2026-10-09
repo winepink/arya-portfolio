@@ -23,7 +23,7 @@ const tabs: { id: Tab; label: string }[] = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
   { id: "research", label: "Research" },
-  { id: "writing", label: "Writing" },
+  { id: "writing", label: "Writing & Teaching" },
 ];
 
 export default function Home() {
@@ -264,7 +264,7 @@ export default function Home() {
                       <h3 className="mt-3 font-semibold">
                         Distributed Systems
                       </h3>
-                      <p className="mt-2 text-sm leading-6 text-[#716056]">
+                      <p className="mt-2 text-sm leading-6 text-[#62534B]">
                         Reliability, observability, failure handling, and
                         systems that keep working when things go wrong.
                       </p>
@@ -275,7 +275,7 @@ export default function Home() {
                       <h3 className="mt-3 font-semibold">
                         Networking & Cloud Infrastructure
                       </h3>
-                      <p className="mt-2 text-sm leading-6 text-[#716056]">
+                      <p className="mt-2 text-sm leading-6 text-[#62534B]">
                         Kubernetes, Cilium/eBPF, BGP, multi-cluster networking,
                         and the infrastructure connecting distributed services.
                       </p>
@@ -286,7 +286,7 @@ export default function Home() {
                       <h3 className="mt-3 font-semibold">
                         Backend & Data
                       </h3>
-                      <p className="mt-2 text-sm leading-6 text-[#716056]">
+                      <p className="mt-2 text-sm leading-6 text-[#62534B]">
                         Microservices, streaming systems, CDC, and production
                         data infrastructure.
                       </p>
@@ -297,7 +297,7 @@ export default function Home() {
                       <h3 className="mt-3 font-semibold">
                         ML Infrastructure
                       </h3>
-                      <p className="mt-2 text-sm leading-6 text-[#716056]">
+                      <p className="mt-2 text-sm leading-6 text-[#62534B]">
                         Distributed ML systems, developer tooling, and the
                         infrastructure underneath AI workloads.
                       </p>
@@ -349,7 +349,7 @@ export default function Home() {
                         Hierarchical Federated Learning
                       </h3>
 
-                      <p className="mt-2 text-sm leading-6 text-[#716056]">
+                      <p className="mt-2 text-sm leading-6 text-[#62534B]">
                         Distributed ML across heterogeneous compute environments.
                       </p>
 
@@ -372,7 +372,7 @@ export default function Home() {
                         Robotic Grasp Detection
                       </h3>
 
-                      <p className="mt-2 text-sm leading-6 text-[#716056]">
+                      <p className="mt-2 text-sm leading-6 text-[#62534B]">
                         Representation learning for robotic grasp detection.
                       </p>
 
@@ -424,7 +424,7 @@ export default function Home() {
                                 />
                                 Rubrik
                               </h3>
-                              <span className="text-sm text-[#8A7568]">
+                              <span className="text-sm text-[#756359]">
                                 Software Engineer Intern
                               </span>
                             </div>
@@ -434,7 +434,7 @@ export default function Home() {
                             </p>
                           </div>
 
-                          <span className="text-xs font-medium text-[#8A7568]">
+                          <span className="text-xs font-medium text-[#756359]">
                             2026
                           </span>
                         </div>
@@ -459,12 +459,12 @@ export default function Home() {
                             ~200 distributed services
                           </span>
 
-                          <span className="text-xs text-[#8A7568] transition group-open:rotate-180">
+                          <span className="text-xs text-[#756359] transition group-open:rotate-180">
                             Details ↓
                           </span>
                         </div>
 
-                        <p className="mt-3 text-xs leading-5 text-[#8A7568]">
+                        <p className="mt-3 text-xs leading-5 text-[#756359]">
                           Go · Python · Kubernetes · gRPC · Bazel · GCP · Claude Code
                         </p>
                       </summary>
@@ -497,7 +497,7 @@ export default function Home() {
                                 />
                                 Google
                               </h3>
-                              <span className="text-sm text-[#8A7568]">
+                              <span className="text-sm text-[#756359]">
                                 Software Engineer
                               </span>
                             </div>
@@ -507,7 +507,7 @@ export default function Home() {
                             </p>
                           </div>
 
-                          <span className="text-xs font-medium text-[#8A7568]">
+                          <span className="text-xs font-medium text-[#756359]">
                             2024–2025
                           </span>
                         </div>
@@ -532,12 +532,12 @@ export default function Home() {
                             99.5%+ reliability
                           </span>
 
-                          <span className="text-xs text-[#8A7568] transition group-open:rotate-180">
+                          <span className="text-xs text-[#756359] transition group-open:rotate-180">
                             Details ↓
                           </span>
                         </div>
 
-                        <p className="mt-3 text-xs leading-5 text-[#8A7568]">
+                        <p className="mt-3 text-xs leading-5 text-[#756359]">
                           Go · Kubernetes · GKE · Cilium/eBPF · BGP · Hubble
                         </p>
                       </summary>
@@ -571,7 +571,7 @@ export default function Home() {
                                 />
                                 Flipkart (Walmart)
                               </h3>
-                              <span className="text-sm text-[#8A7568]">
+                              <span className="text-sm text-[#756359]">
                                 Intern → SDE-1 → SDE-2
                               </span>
                             </div>
@@ -581,7 +581,7 @@ export default function Home() {
                             </p>
                           </div>
 
-                          <span className="text-xs font-medium text-[#8A7568]">
+                          <span className="text-xs font-medium text-[#756359]">
                             2022–2024
                           </span>
                         </div>
@@ -606,12 +606,12 @@ export default function Home() {
                             ~9K RPM
                           </span>
 
-                          <span className="text-xs text-[#8A7568] transition group-open:rotate-180">
+                          <span className="text-xs text-[#756359] transition group-open:rotate-180">
                             Details ↓
                           </span>
                         </div>
 
-                        <p className="mt-3 text-xs leading-5 text-[#8A7568]">
+                        <p className="mt-3 text-xs leading-5 text-[#756359]">
                           Java · GCP · GKE · Pub/Sub · Dataflow · Debezium · BigQuery
                         </p>
                       </summary>
@@ -734,11 +734,11 @@ export default function Home() {
                   Writing & Teaching
                 </p>
 
-                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[#2A211B] md:text-3xl">
-                  Learning is more fun when it&apos;s shared.
+                <h2 className="mt-3 text-xl font-semibold tracking-tight text-[#2A211B] md:text-2xl">
+                  Teaching and technical writing.
                 </h2>
 
-                <p className="mt-4 max-w-2xl text-sm leading-7 text-[#716056]">
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-[#62534B]">
                   I like making technical ideas feel intuitive, and I enjoy
                   working through problems with people through writing,
                   teaching, and discussion.
@@ -758,7 +758,7 @@ export default function Home() {
                           Graduate Teaching Assistant
                         </h3>
 
-                        <p className="mt-1 text-sm font-medium text-[#716056]">
+                        <p className="mt-1 text-sm font-medium text-[#62534B]">
                           UMass Amherst
                         </p>
                       </div>
@@ -785,7 +785,7 @@ export default function Home() {
                           Teaching Assistant
                         </h3>
 
-                        <p className="mt-1 text-sm font-medium text-[#716056]">
+                        <p className="mt-1 text-sm font-medium text-[#62534B]">
                           IIIT Allahabad
                         </p>
                       </div>
@@ -817,7 +817,7 @@ export default function Home() {
                           Articles & technical explanations
                         </h3>
 
-                        <p className="mt-2 max-w-xl text-sm leading-6 text-[#716056]">
+                        <p className="mt-2 max-w-xl text-sm leading-6 text-[#62534B]">
                           Programming, algorithms, computer science concepts,
                           and practical technical explanations.
                         </p>
