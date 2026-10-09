@@ -355,7 +355,8 @@ export default function Home() {
 
                     </a>
 
-                    <a
+                    <div className="flex flex-wrap items-center gap-3">
+                      <a
                       href="https://ieeexplore.ieee.org/document/9179578"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -376,6 +377,16 @@ export default function Home() {
                       </p>
 
                     </a>
+
+                      <a
+                        href="https://sites.google.com/view/wicvworkshop-cvpr2020/program/poster-presentations"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm font-semibold text-[#A45236] transition hover:opacity-70"
+                      >
+                        WiCV @ CVPR 2020 · Poster ↗
+                      </a>
+                    </div>
 
                   </div>
                 </div>
@@ -706,7 +717,7 @@ export default function Home() {
                     </p>
 
                     <p className="mt-5 text-sm font-medium text-[#4E7466]">
-                      SPCOM 2020 · WiCV @ CVPR 2020 ↗
+                      SPCOM 2020 · WiCV @ CVPR 2020 — Poster ↗
                     </p>
 
                   </a>
