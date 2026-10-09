@@ -402,6 +402,74 @@ export default function Home() {
 
                 <div className="relative mt-10 space-y-5 before:absolute before:bottom-5 before:left-[7px] before:top-5 before:w-px before:bg-[#DCCBC0]">
 
+                  {/* Rubrik */}
+                  <div className="relative pl-8">
+                    <span className="absolute left-0 top-6 h-[15px] w-[15px] rounded-full border-[3px] border-[#F7F1EB] bg-[#728C73]" />
+
+                    <details className="group rounded-2xl border border-[#DED0C6] bg-[#FBF7F3] p-5 shadow-sm transition hover:shadow-md">
+                      <summary className="cursor-pointer list-none">
+                        <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                          <div>
+                            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                              <h3 className="text-xl font-semibold text-[#2A211B]">
+                                Rubrik
+                              </h3>
+                              <span className="text-sm text-[#8A7568]">
+                                Software Engineer Intern
+                              </span>
+                            </div>
+
+                            <p className="mt-1 text-sm font-medium text-[#728C73]">
+                              Platform Infrastructure · Security Cloud
+                            </p>
+                          </div>
+
+                          <span className="text-xs font-medium text-[#8A7568]">
+                            2026
+                          </span>
+                        </div>
+
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {[
+                            "Service infrastructure",
+                            "Developer tooling",
+                            "AI-assisted workflows",
+                          ].map((item) => (
+                            <span
+                              key={item}
+                              className="rounded-full border border-[#E1D4CA] bg-white px-3 py-1 text-xs font-medium text-[#65554C]"
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+
+                        <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+                          <span className="rounded-lg bg-[#E5ECE3] px-3 py-1.5 text-xs font-semibold text-[#536B55]">
+                            ~200 distributed services
+                          </span>
+
+                          <span className="text-xs text-[#8A7568] transition group-open:rotate-180">
+                            Details ↓
+                          </span>
+                        </div>
+
+                        <p className="mt-3 text-xs leading-5 text-[#8A7568]">
+                          Go · Python · Kubernetes · gRPC · Bazel · GCP · Claude Code
+                        </p>
+                      </summary>
+
+                      <div className="mt-5 border-t border-[#E6DAD2] pt-5 text-sm leading-7 text-[#65554C]">
+                        Worked on platform infrastructure for Rubrik Security
+                        Cloud, standardizing infrastructure dependencies,
+                        resources, and runtime configuration across roughly 200
+                        distributed services. Built AI-assisted platform tooling
+                        for service analysis, code generation, validation, and
+                        migration workflows.
+                      </div>
+                    </details>
+                  </div>
+
                   {/* Google */}
                   <div className="relative pl-8">
                     <span className="absolute left-0 top-6 h-[15px] w-[15px] rounded-full border-[3px] border-[#F7F1EB] bg-[#A45236]" />
@@ -467,74 +535,6 @@ export default function Home() {
                         MTU mismatches, pod IP exhaustion, DNS, TLS, and service
                         reachability, and built observability around control-plane
                         and data-plane reliability.
-                      </div>
-                    </details>
-                  </div>
-
-                  {/* Rubrik */}
-                  <div className="relative pl-8">
-                    <span className="absolute left-0 top-6 h-[15px] w-[15px] rounded-full border-[3px] border-[#F7F1EB] bg-[#728C73]" />
-
-                    <details className="group rounded-2xl border border-[#DED0C6] bg-[#FBF7F3] p-5 shadow-sm transition hover:shadow-md">
-                      <summary className="cursor-pointer list-none">
-                        <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-                          <div>
-                            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                              <h3 className="text-xl font-semibold text-[#2A211B]">
-                                Rubrik
-                              </h3>
-                              <span className="text-sm text-[#8A7568]">
-                                Software Engineer Intern
-                              </span>
-                            </div>
-
-                            <p className="mt-1 text-sm font-medium text-[#728C73]">
-                              Platform Infrastructure · Security Cloud
-                            </p>
-                          </div>
-
-                          <span className="text-xs font-medium text-[#8A7568]">
-                            2026
-                          </span>
-                        </div>
-
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          {[
-                            "Service infrastructure",
-                            "Developer tooling",
-                            "AI-assisted workflows",
-                          ].map((item) => (
-                            <span
-                              key={item}
-                              className="rounded-full border border-[#E1D4CA] bg-white px-3 py-1 text-xs font-medium text-[#65554C]"
-                            >
-                              {item}
-                            </span>
-                          ))}
-                        </div>
-
-                        <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-                          <span className="rounded-lg bg-[#E5ECE3] px-3 py-1.5 text-xs font-semibold text-[#536B55]">
-                            ~200 distributed services
-                          </span>
-
-                          <span className="text-xs text-[#8A7568] transition group-open:rotate-180">
-                            Details ↓
-                          </span>
-                        </div>
-
-                        <p className="mt-3 text-xs leading-5 text-[#8A7568]">
-                          Go · Python · Kubernetes · gRPC · Bazel · GCP · Claude Code
-                        </p>
-                      </summary>
-
-                      <div className="mt-5 border-t border-[#E6DAD2] pt-5 text-sm leading-7 text-[#65554C]">
-                        Worked on platform infrastructure for Rubrik Security
-                        Cloud, standardizing infrastructure dependencies,
-                        resources, and runtime configuration across roughly 200
-                        distributed services. Built AI-assisted platform tooling
-                        for service analysis, code generation, validation, and
-                        migration workflows.
                       </div>
                     </details>
                   </div>
