@@ -50,17 +50,22 @@ export default function Home() {
             />
           </button>
 
-          <div className="mt-5 flex items-baseline gap-2">
-            <h1 className="text-2xl font-semibold tracking-tight">
+          <div className="mt-5 flex items-center gap-2">
+            <h1 className="whitespace-nowrap text-[22px] font-semibold tracking-tight">
               Arya Krishnan
             </h1>
-            <span className="text-sm font-medium text-[#9B8577]">
+
+            <span className="shrink-0 rounded-full bg-[#F1E5DC] px-2 py-0.5 text-[11px] font-medium text-[#8B7466]">
               she/her
             </span>
           </div>
 
-          <p className="mt-2 text-sm font-medium leading-6 text-[#A45236]">
-            Backend · Infrastructure · Distributed Systems
+          <p className="mt-2 text-sm font-semibold text-[#A45236]">
+            Software Engineer
+          </p>
+
+          <p className="mt-1 text-xs font-medium leading-5 text-[#7A675B]">
+            Distributed Systems · Cloud Infrastructure · Networking
           </p>
 
           <div className="my-6 h-px bg-[#E7D9CF]" />
@@ -186,16 +191,16 @@ export default function Home() {
                   Hello
                 </p>
 
-                <h2 className="mt-3 max-w-3xl text-4xl font-semibold leading-tight tracking-tight md:text-5xl">
-                  I like building systems where the details underneath really matter.
+                <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+                  I build infrastructure, networking, and backend systems.
                 </h2>
 
                 <p className="mt-6 max-w-3xl text-lg leading-8 text-[#5D4D43]">
                   I&apos;ve worked on cloud networking at Google, platform
                   infrastructure at Rubrik, and backend and data systems at
                   Flipkart. I&apos;m especially drawn to problems around
-                  reliability, distributed systems, infrastructure, and the
-                  software layers that other engineers depend on.
+                  networking, distributed systems, reliability, and the
+                  infrastructure other engineers depend on.
                 </p>
 
                 {/* ABOUT ME */}
@@ -209,10 +214,10 @@ export default function Home() {
                     I started my career building backend and data systems at
                     Flipkart, then found myself getting increasingly curious
                     about what happens underneath the application layer. That
-                    curiosity took me into cloud networking at Google and
-                    platform infrastructure at Rubrik, and eventually back to
-                    school at UMass to spend more time exploring distributed
-                    systems, security, and ML infrastructure.
+                    curiosity took me deeper into cloud networking at Google
+                    and platform infrastructure at Rubrik, and eventually back
+                    to school at UMass to spend more time exploring distributed
+                    systems, networking, security, and ML infrastructure.
                   </p>
 
                   <p className="mt-4 max-w-3xl leading-7 text-[#625249]">
@@ -267,11 +272,11 @@ export default function Home() {
                     <div className="rounded-2xl border border-[#E2D3C8] bg-[#FFFDF9] p-5">
                       <Network size={20} className="text-[#4E7466]" />
                       <h3 className="mt-3 font-semibold">
-                        Cloud & Networking
+                        Networking & Cloud Infrastructure
                       </h3>
                       <p className="mt-2 text-sm leading-6 text-[#716056]">
-                        Kubernetes, networking, cloud infrastructure, and the
-                        layers connecting distributed services.
+                        Kubernetes, Cilium/eBPF, BGP, multi-cluster networking,
+                        and the infrastructure connecting distributed services.
                       </p>
                     </div>
 
