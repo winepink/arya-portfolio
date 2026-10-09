@@ -28,6 +28,7 @@ const tabs: { id: Tab; label: string }[] = [
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<Tab>("about");
+  const [photoOpen, setPhotoOpen] = useState(false);
 
   return (
     <main className="min-h-screen bg-[#EFE6DC] px-4 py-8 text-[#2A211B] md:px-8 md:py-12">
@@ -37,19 +38,17 @@ export default function Home() {
         {/* PROFILE PANEL */}
         <aside className="h-fit rounded-[28px] border border-[#DECFC3] bg-[#FFF9F2] p-6 shadow-[0_20px_50px_rgba(70,48,35,0.08)] md:sticky md:top-8">
 
-          <a
-            href="/arya.jpg"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-block"
-            title="Open photo"
+          <button
+            onClick={() => setPhotoOpen(true)}
+            className="group inline-block cursor-zoom-in"
+            aria-label="Enlarge profile photo"
           >
             <img
               src="/arya.jpg"
               alt="Arya Krishnan"
               className="h-24 w-24 rounded-2xl border border-[#DECFC3] object-cover shadow-sm transition duration-300 group-hover:scale-[1.03] group-hover:shadow-md"
             />
-          </a>
+          </button>
 
           <div className="mt-5 flex items-baseline gap-2">
             <h1 className="text-2xl font-semibold tracking-tight">
@@ -706,6 +705,28 @@ export default function Home() {
         </section>
 
       </div>
+
+      {photoOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+          onClick={() => setPhotoOpen(false)}
+        >
+          <button
+            onClick={() => setPhotoOpen(false)}
+            className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-xl font-semibold text-[#2A211B] shadow-lg transition hover:bg-white"
+            aria-label="Close photo"
+          >
+            ×
+          </button>
+
+          <img
+            src="/arya.jpg"
+            alt="Arya Krishnan"
+            onClick={(e) => e.stopPropagation()}
+            className="max-h-[85vh] max-w-[90vw] rounded-3xl border border-white/20 object-contain shadow-2xl"
+          />
+        </div>
+      )}
 
     </main>
   );
