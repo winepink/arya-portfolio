@@ -214,10 +214,11 @@ export default function Home() {
                     I started my career building backend and data systems at
                     Flipkart, then found myself getting increasingly curious
                     about what happens underneath the application layer. That
-                    curiosity took me deeper into cloud networking at Google
-                    and platform infrastructure at Rubrik, and eventually back
-                    to school at UMass to spend more time exploring distributed
-                    systems, networking, security, and ML infrastructure.
+                    curiosity took me from backend and data systems into cloud
+                    networking at Google, and later, while pursuing my MS at
+                    UMass, into platform infrastructure at Rubrik. Grad school
+                    has also given me room to keep exploring distributed systems,
+                    networking, security, and ML infrastructure.
                   </p>
 
                   <p className="mt-4 max-w-3xl leading-7 text-[#625249]">
