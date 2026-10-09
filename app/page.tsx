@@ -204,24 +204,16 @@ export default function Home() {
                 </p>
 
                 {/* ABOUT ME */}
-                <div className="mt-10 rounded-2xl border border-[#E2D3C8] bg-white p-6 md:p-7">
+                <details className="group rounded-2xl border border-[#DED0C6] bg-[#FBF7F3] p-5">
+                    <summary className="flex cursor-pointer list-none items-center justify-between font-semibold text-[#2A211B]">
+                      <span>A little about me</span>
+                      <span className="text-sm text-[#756359] transition group-open:rotate-180">
+                        ↓
+                      </span>
+                    </summary>
 
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#4E7466]">
-                    A little about me
-                  </p>
-
-                  <p className="mt-4 max-w-3xl leading-7 text-[#625249]">
-                    I started my career building backend and data systems at
-                    Flipkart, then found myself getting increasingly curious
-                    about what happens underneath the application layer. That
-                    curiosity took me from backend and data systems into cloud
-                    networking at Google, and later, while pursuing my MS at
-                    UMass, into platform infrastructure at Rubrik. Grad school
-                    has also given me room to keep exploring distributed systems,
-                    networking, security, and ML infrastructure.
-                  </p>
-
-                  <p className="mt-4 max-w-3xl leading-7 text-[#625249]">
+                    <div className="mt-4">
+<p className="mt-4 max-w-3xl leading-7 text-[#625249]">
                     Outside of engineering, I love traveling, wandering into
                     new cafés, and getting far too invested in video games.
                     I think I like exploring cities for roughly the same reason
@@ -247,8 +239,8 @@ export default function Home() {
                     </div>
 
                   </div>
-
-                </div>
+                    </div>
+                  </details>
 
                 {/* FOCUS */}
                 <div className="mt-10">
