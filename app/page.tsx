@@ -85,7 +85,8 @@ export default function Home() {
                 Previously
               </p>
               <p className="mt-1">
-                Google · Rubrik · Flipkart (Walmart Group)
+                <span className="block">Google · Rubrik</span>
+            <span className="block">Flipkart (Walmart Group)</span>
               </p>
             </div>
 
