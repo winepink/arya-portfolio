@@ -348,12 +348,8 @@ export default function Home() {
                     </a>
 
                     <div className="flex flex-wrap items-center gap-3">
-                      <a
-                      href="https://ieeexplore.ieee.org/document/9179578"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group rounded-2xl border border-[#E2D3C8] bg-[#FFFDF9] p-5 transition hover:-translate-y-1"
-                    >
+                      <div className="group rounded-2xl border border-[#E2D3C8] bg-[#FFFDF9] p-5 transition hover:-translate-y-1">
+
 
                       <div className="flex justify-between gap-4">
                         <Boxes className="text-[#4E7466]" size={21} />
@@ -368,7 +364,18 @@ export default function Home() {
                         Representation learning for robotic grasp detection.
                       </p>
 
-                    </a>
+                      <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-[#E6DAD2] pt-4">
+                        <a
+                          href="https://ieeexplore.ieee.org/document/9179578"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm font-semibold text-[#A45236] transition hover:opacity-70"
+                        >
+                          Paper ↗
+                        </a>
+                      </div>
+
+                    </div>
 
                       <a
                         href="https://sites.google.com/view/wicvworkshop-cvpr2020/program/poster-presentations"
@@ -376,7 +383,6 @@ export default function Home() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 text-sm font-semibold text-[#A45236] transition hover:opacity-70"
                       >
-                        WiCV @ CVPR 2020 · Poster ↗
                       </a>
                     </div>
 
