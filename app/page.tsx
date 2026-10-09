@@ -718,66 +718,108 @@ export default function Home() {
 
             {/* WRITING */}
             {activeTab === "writing" && (
-              <div className="animate-fade">
-
-                <div className="flex items-center gap-3 text-[#A45236]">
-                  <BookOpen size={21} />
-
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em]">
-                    Writing
-                  </p>
-                </div>
-
-                <h2 className="mt-3 text-3xl font-semibold tracking-tight">
-                  Technical writing
-                </h2>
-
-                <p className="mt-5 max-w-2xl leading-7 text-[#625249]">
-                  I&apos;ve also spent time writing and explaining computer
-                  science topics. I like breaking technical ideas down until
-                  they feel intuitive rather than intimidating.
+              <section className="animate-fade">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#A45236]">
+                  Writing & Teaching
                 </p>
 
-                <a
-                  href="https://www.geeksforgeeks.org/profile/arya31?tab=articles"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group mt-9 block rounded-2xl border border-[#E2D3C8] bg-white p-6 transition hover:-translate-y-1"
-                >
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[#2A211B] md:text-3xl">
+                  Learning is more fun when it&apos;s shared.
+                </h2>
 
-                  <div className="flex items-start justify-between gap-5">
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-[#716056]">
+                  I like making technical ideas feel intuitive, and I enjoy
+                  working through problems with people through writing,
+                  teaching, and discussion.
+                </p>
 
-                    <div>
+                <div className="mt-8 grid gap-4 md:grid-cols-2">
 
-                      <p className="text-sm font-medium text-[#4E7466]">
-                        GeeksforGeeks
-                      </p>
+                  {/* UMass */}
+                  <div className="rounded-2xl border border-[#DED0C6] bg-[#FBF7F3] p-5 transition hover:shadow-md">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#A45236]">
+                          Teaching
+                        </p>
 
-                      <h3 className="mt-2 text-xl font-semibold">
-                        Articles & technical explanations
-                      </h3>
+                        <h3 className="mt-2 text-lg font-semibold text-[#2A211B]">
+                          Graduate Teaching Assistant
+                        </h3>
 
+                        <p className="mt-1 text-sm font-medium text-[#716056]">
+                          UMass Amherst
+                        </p>
+                      </div>
+
+                      <span className="rounded-full bg-[#E5ECE3] px-2.5 py-1 text-[11px] font-medium text-[#536B55]">
+                        Current
+                      </span>
                     </div>
 
-                    <ArrowUpRight
-                      size={19}
-                      className="text-[#A69082]"
-                    />
-
+                    <p className="mt-4 text-sm text-[#65554C]">
+                      Computer Networking
+                    </p>
                   </div>
 
-                  <p className="mt-4 max-w-xl leading-7 text-[#625249]">
-                    Programming, algorithms, computer science concepts, and
-                    practical technical explanations.
-                  </p>
+                  {/* IIIT Allahabad */}
+                  <div className="rounded-2xl border border-[#DED0C6] bg-[#FBF7F3] p-5 transition hover:shadow-md">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#A45236]">
+                          Teaching
+                        </p>
 
-                  <p className="mt-5 text-sm font-medium text-[#A45236]">
-                    Browse my articles →
-                  </p>
+                        <h3 className="mt-2 text-lg font-semibold text-[#2A211B]">
+                          Teaching Assistant
+                        </h3>
 
-                </a>
+                        <p className="mt-1 text-sm font-medium text-[#716056]">
+                          IIIT Allahabad
+                        </p>
+                      </div>
 
-              </div>
+                      <span className="rounded-full bg-[#F2E1D6] px-2.5 py-1 text-[11px] font-medium text-[#8F452F]">
+                        Previously
+                      </span>
+                    </div>
+
+                    <p className="mt-4 text-sm text-[#65554C]">
+                      Object-Oriented Methodology
+                    </p>
+                  </div>
+
+                  {/* Technical writing */}
+                  <a
+                    href="https://www.geeksforgeeks.org/profile/arya31?tab=articles"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group rounded-2xl border border-[#DED0C6] bg-[#FBF7F3] p-5 transition hover:-translate-y-0.5 hover:shadow-md md:col-span-2"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#A45236]">
+                          Technical Writing
+                        </p>
+
+                        <h3 className="mt-2 text-lg font-semibold text-[#2A211B]">
+                          Articles & technical explanations
+                        </h3>
+
+                        <p className="mt-2 max-w-xl text-sm leading-6 text-[#716056]">
+                          Programming, algorithms, computer science concepts,
+                          and practical technical explanations.
+                        </p>
+                      </div>
+
+                      <span className="mt-1 text-sm text-[#A45236] transition group-hover:translate-x-1">
+                        ↗
+                      </span>
+                    </div>
+                  </a>
+
+                </div>
+              </section>
             )}
 
           </div>
