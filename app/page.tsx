@@ -411,7 +411,12 @@ export default function Home() {
                         <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                           <div>
                             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                              <h3 className="text-xl font-semibold text-[#2A211B]">
+                              <h3 className="flex items-center gap-2 text-xl font-semibold text-[#2A211B]">
+                                <img
+                                  src="/rubrik-logo.png"
+                                  alt=""
+                                  className="h-5 w-5 shrink-0 object-contain"
+                                />
                                 Rubrik
                               </h3>
                               <span className="text-sm text-[#8A7568]">
@@ -479,7 +484,12 @@ export default function Home() {
                         <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                           <div>
                             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                              <h3 className="text-xl font-semibold text-[#2A211B]">
+                              <h3 className="flex items-center gap-2 text-xl font-semibold text-[#2A211B]">
+                                <img
+                                  src="/google-logo.png"
+                                  alt=""
+                                  className="h-5 w-5 shrink-0 object-contain"
+                                />
                                 Google
                               </h3>
                               <span className="text-sm text-[#8A7568]">
@@ -548,7 +558,12 @@ export default function Home() {
                         <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                           <div>
                             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                              <h3 className="text-xl font-semibold text-[#2A211B]">
+                              <h3 className="flex items-center gap-2 text-xl font-semibold text-[#2A211B]">
+                                <img
+                                  src="/flipkart-logo.png"
+                                  alt=""
+                                  className="h-5 w-5 shrink-0 object-contain"
+                                />
                                 Flipkart (Walmart)
                               </h3>
                               <span className="text-sm text-[#8A7568]">
