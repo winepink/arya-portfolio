@@ -390,15 +390,9 @@ export default function Home() {
                   Experience
                 </p>
 
-                <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#2A211B] md:text-4xl">
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[#2A211B] md:text-3xl">
                   Production systems I&apos;ve helped build and run.
                 </h2>
-
-                <p className="mt-4 max-w-2xl text-sm leading-7 text-[#716056]">
-                  Across networking, platform infrastructure, backend systems,
-                  and streaming data, I&apos;ve worked on software that has to
-                  keep working when the details get complicated.
-                </p>
 
                 <div className="relative mt-10 space-y-5 before:absolute before:bottom-5 before:left-[7px] before:top-5 before:w-px before:bg-[#DCCBC0]">
 
