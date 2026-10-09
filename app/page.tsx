@@ -385,166 +385,231 @@ export default function Home() {
 
             {/* EXPERIENCE */}
             {activeTab === "experience" && (
-              <div className="animate-fade">
-
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#A45236]">
+              <section className="animate-fade">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#A45236]">
                   Experience
                 </p>
 
-                <h2 className="mt-3 text-3xl font-semibold tracking-tight">
-                  Systems I&apos;ve helped build
+                <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#2A211B] md:text-4xl">
+                  Production systems I&apos;ve helped build and run.
                 </h2>
 
-                <div className="mt-9 space-y-5">
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-[#716056]">
+                  Across networking, platform infrastructure, backend systems,
+                  and streaming data, I&apos;ve worked on software that has to
+                  keep working when the details get complicated.
+                </p>
 
-                  {/* GOOGLE */}
-                  <div className="rounded-2xl border border-[#E2D3C8] bg-white p-6">
+                <div className="relative mt-10 space-y-5 before:absolute before:bottom-5 before:left-[7px] before:top-5 before:w-px before:bg-[#DCCBC0]">
 
-                    <div className="flex flex-wrap items-start justify-between gap-3">
+                  {/* Google */}
+                  <div className="relative pl-8">
+                    <span className="absolute left-0 top-6 h-[15px] w-[15px] rounded-full border-[3px] border-[#F7F1EB] bg-[#A45236]" />
 
-                      <div className="flex gap-4">
+                    <details className="group rounded-2xl border border-[#DED0C6] bg-[#FBF7F3] p-5 shadow-sm transition hover:shadow-md">
+                      <summary className="cursor-pointer list-none">
+                        <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                          <div>
+                            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                              <h3 className="text-xl font-semibold text-[#2A211B]">
+                                Google
+                              </h3>
+                              <span className="text-sm text-[#8A7568]">
+                                Software Engineer
+                              </span>
+                            </div>
 
-                        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#EDF4F0] text-[#416657]">
-                          <CloudCog size={22} />
+                            <p className="mt-1 text-sm font-medium text-[#A45236]">
+                              Multi-cluster Cloud Networking
+                            </p>
+                          </div>
+
+                          <span className="text-xs font-medium text-[#8A7568]">
+                            2024–2025
+                          </span>
                         </div>
 
-                        <div>
-                          <h3 className="text-xl font-semibold">
-                            Google
-                          </h3>
-
-                          <p className="text-sm font-medium text-[#4E7466]">
-                            Software Engineer · Cloud Networking
-                          </p>
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {[
+                            "Multi-cluster networking",
+                            "Production debugging",
+                            "SLOs & observability",
+                          ].map((item) => (
+                            <span
+                              key={item}
+                              className="rounded-full border border-[#E1D4CA] bg-white px-3 py-1 text-xs font-medium text-[#65554C]"
+                            >
+                              {item}
+                            </span>
+                          ))}
                         </div>
 
+                        <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+                          <span className="rounded-lg bg-[#F2E1D6] px-3 py-1.5 text-xs font-semibold text-[#8F452F]">
+                            99.5%+ reliability
+                          </span>
+
+                          <span className="text-xs text-[#8A7568] transition group-open:rotate-180">
+                            Details ↓
+                          </span>
+                        </div>
+
+                        <p className="mt-3 text-xs leading-5 text-[#8A7568]">
+                          Go · Kubernetes · GKE · Cilium/eBPF · BGP · Hubble
+                        </p>
+                      </summary>
+
+                      <div className="mt-5 border-t border-[#E6DAD2] pt-5 text-sm leading-7 text-[#65554C]">
+                        Built and operated networking infrastructure for Google
+                        Distributed Cloud Hosted, including Kubernetes,
+                        Cilium/eBPF, BGP, ClusterMesh, VXLAN, VRFs, and IP
+                        tunneling. Debugged production issues across routing,
+                        MTU mismatches, pod IP exhaustion, DNS, TLS, and service
+                        reachability, and built observability around control-plane
+                        and data-plane reliability.
                       </div>
-
-                      <span className="text-sm text-[#8B776A]">
-                        2024 – 2025
-                      </span>
-
-                    </div>
-
-                    <p className="mt-5 leading-7 text-[#625249]">
-                      Built and operated networking infrastructure for Google
-                      Distributed Cloud Hosted using Kubernetes, Cilium/eBPF,
-                      BGP, ClusterMesh, VXLAN, VRFs, and IP tunneling.
-                    </p>
-
-                    <p className="mt-3 leading-7 text-[#625249]">
-                      Debugged production issues spanning routing, MTU, DNS,
-                      TLS, pod IP exhaustion, and service reachability, and
-                      built observability around control-plane and dataplane
-                      reliability.
-                    </p>
-
-                    <p className="mt-4 text-sm leading-6 text-[#8B776A]">
-                      Go · Python · Kubernetes · GKE · Cilium · eBPF · BGP · Hubble · Grafana · GCP
-                    </p>
-
+                    </details>
                   </div>
 
-                  {/* RUBRIK */}
-                  <div className="rounded-2xl border border-[#E2D3C8] bg-white p-6">
+                  {/* Rubrik */}
+                  <div className="relative pl-8">
+                    <span className="absolute left-0 top-6 h-[15px] w-[15px] rounded-full border-[3px] border-[#F7F1EB] bg-[#728C73]" />
 
-                    <div className="flex flex-wrap items-start justify-between gap-3">
+                    <details className="group rounded-2xl border border-[#DED0C6] bg-[#FBF7F3] p-5 shadow-sm transition hover:shadow-md">
+                      <summary className="cursor-pointer list-none">
+                        <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                          <div>
+                            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                              <h3 className="text-xl font-semibold text-[#2A211B]">
+                                Rubrik
+                              </h3>
+                              <span className="text-sm text-[#8A7568]">
+                                Software Engineer Intern
+                              </span>
+                            </div>
 
-                      <div className="flex gap-4">
+                            <p className="mt-1 text-sm font-medium text-[#728C73]">
+                              Platform Infrastructure · Security Cloud
+                            </p>
+                          </div>
 
-                        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#FFF0E8] text-[#A45236]">
-                          <Boxes size={22} />
+                          <span className="text-xs font-medium text-[#8A7568]">
+                            2026
+                          </span>
                         </div>
 
-                        <div>
-                          <h3 className="text-xl font-semibold">
-                            Rubrik
-                          </h3>
-
-                          <p className="text-sm font-medium text-[#A45236]">
-                            Software Engineer Intern · Platform Infrastructure
-                          </p>
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {[
+                            "Service infrastructure",
+                            "Developer tooling",
+                            "AI-assisted workflows",
+                          ].map((item) => (
+                            <span
+                              key={item}
+                              className="rounded-full border border-[#E1D4CA] bg-white px-3 py-1 text-xs font-medium text-[#65554C]"
+                            >
+                              {item}
+                            </span>
+                          ))}
                         </div>
 
+                        <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+                          <span className="rounded-lg bg-[#E5ECE3] px-3 py-1.5 text-xs font-semibold text-[#536B55]">
+                            ~200 distributed services
+                          </span>
+
+                          <span className="text-xs text-[#8A7568] transition group-open:rotate-180">
+                            Details ↓
+                          </span>
+                        </div>
+
+                        <p className="mt-3 text-xs leading-5 text-[#8A7568]">
+                          Go · Python · Kubernetes · gRPC · Bazel · GCP · Claude Code
+                        </p>
+                      </summary>
+
+                      <div className="mt-5 border-t border-[#E6DAD2] pt-5 text-sm leading-7 text-[#65554C]">
+                        Worked on platform infrastructure for Rubrik Security
+                        Cloud, standardizing infrastructure dependencies,
+                        resources, and runtime configuration across roughly 200
+                        distributed services. Built AI-assisted platform tooling
+                        for service analysis, code generation, validation, and
+                        migration workflows.
                       </div>
-
-                      <span className="text-sm text-[#8B776A]">
-                        2026
-                      </span>
-
-                    </div>
-
-                    <p className="mt-5 leading-7 text-[#625249]">
-                      Standardized infrastructure dependencies, resources, and
-                      runtime configuration across roughly 200 distributed
-                      services in Rubrik Security Cloud.
-                    </p>
-
-                    <p className="mt-3 leading-7 text-[#625249]">
-                      Built AI-assisted platform tooling with Claude Code for
-                      service analysis, code generation, validation, and
-                      migrations.
-                    </p>
-
-                    <p className="mt-4 text-sm leading-6 text-[#8B776A]">
-                      Go · Python · Kubernetes · gRPC · Bazel · GCP · Claude Code
-                    </p>
-
+                    </details>
                   </div>
 
-                  {/* FLIPKART */}
-                  <div className="rounded-2xl border border-[#E2D3C8] bg-white p-6">
+                  {/* Flipkart */}
+                  <div className="relative pl-8">
+                    <span className="absolute left-0 top-6 h-[15px] w-[15px] rounded-full border-[3px] border-[#F7F1EB] bg-[#B8925C]" />
 
-                    <div className="flex flex-wrap items-start justify-between gap-3">
+                    <details className="group rounded-2xl border border-[#DED0C6] bg-[#FBF7F3] p-5 shadow-sm transition hover:shadow-md">
+                      <summary className="cursor-pointer list-none">
+                        <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                          <div>
+                            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                              <h3 className="text-xl font-semibold text-[#2A211B]">
+                                Flipkart (Walmart)
+                              </h3>
+                              <span className="text-sm text-[#8A7568]">
+                                Intern → SDE-1 → SDE-2
+                              </span>
+                            </div>
 
-                      <div className="flex gap-4">
+                            <p className="mt-1 text-sm font-medium text-[#9A7442]">
+                              Marketplace Backend · Streaming Data
+                            </p>
+                          </div>
 
-                        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#F2ECDD] text-[#7A673B]">
-                          <DatabaseZap size={22} />
+                          <span className="text-xs font-medium text-[#8A7568]">
+                            2022–2024
+                          </span>
                         </div>
 
-                        <div>
-                          <h3 className="text-xl font-semibold">
-                            Flipkart
-                          </h3>
-
-                          <p className="text-sm font-medium text-[#7A673B]">
-                            Intern → SDE-1 → SDE-2 · Backend & Data Systems
-                          </p>
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {[
+                            "Marketplace backend",
+                            "CDC streaming",
+                            "Data infrastructure",
+                          ].map((item) => (
+                            <span
+                              key={item}
+                              className="rounded-full border border-[#E1D4CA] bg-white px-3 py-1 text-xs font-medium text-[#65554C]"
+                            >
+                              {item}
+                            </span>
+                          ))}
                         </div>
 
+                        <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+                          <span className="rounded-lg bg-[#F0E5D2] px-3 py-1.5 text-xs font-semibold text-[#806234]">
+                            ~9K RPM
+                          </span>
+
+                          <span className="text-xs text-[#8A7568] transition group-open:rotate-180">
+                            Details ↓
+                          </span>
+                        </div>
+
+                        <p className="mt-3 text-xs leading-5 text-[#8A7568]">
+                          Java · GCP · GKE · Pub/Sub · Dataflow · Debezium · BigQuery
+                        </p>
+                      </summary>
+
+                      <div className="mt-5 border-t border-[#E6DAD2] pt-5 text-sm leading-7 text-[#65554C]">
+                        Built marketplace backend services handling roughly
+                        9K requests per minute and supporting growth in sellers
+                        and serviceable areas. Also built CDC-based streaming
+                        pipelines from SQL Server through Debezium, Pub/Sub, and
+                        Dataflow into BigQuery for downstream analytics.
                       </div>
-
-                      <span className="text-sm text-[#8B776A]">
-                        2022 – 2024
-                      </span>
-
-                    </div>
-
-                    <p className="mt-5 leading-7 text-[#625249]">
-                      Built CDC streaming pipelines and owned a
-                      microservices-based marketplace catalog service scaling
-                      to roughly 9K RPM.
-                    </p>
-
-                    <p className="mt-3 leading-7 text-[#625249]">
-                      This is where I first became drawn to
-                      infrastructure-heavy work and learned to own production
-                      systems end to end.
-                    </p>
-
-                    <p className="mt-4 text-sm leading-6 text-[#8B776A]">
-                      Java · GCP · GKE · Kafka · BigQuery · Pub/Sub · Dataflow · Debezium · Terraform
-                    </p>
-
+                    </details>
                   </div>
 
                 </div>
-
-              </div>
+              </section>
             )}
 
-            {/* RESEARCH */}
             {activeTab === "research" && (
               <div className="animate-fade">
 
