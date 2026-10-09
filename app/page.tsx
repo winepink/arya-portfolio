@@ -357,7 +357,17 @@ export default function Home() {
                     </a>
 
                     <div className="flex flex-wrap items-center gap-3">
-                      <div className="group rounded-2xl border border-[#E2D3C8] bg-[#FFFDF9] p-5 transition hover:-translate-y-1">
+                      <div className="group rounded-2xl border border-[#E2D3C8] bg-[#FFFDF9] p-5 transition hover:-translate-y-1 relative">
+                  <a
+                    href="https://ieeexplore.ieee.org/document/9179578"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute inset-0 z-0 rounded-2xl"
+                    aria-label="Read Robotic Grasp Detection paper"
+                  />
+
+                  <div className="relative z-10 pointer-events-none">
+
 
 
                       <div className="relative flex justify-between gap-4">
@@ -372,14 +382,7 @@ export default function Home() {
                         <Boxes className="text-[#4E7466]" size={21} />
                         <ArrowUpRight size={17} className="text-[#A69082]" />
                       
-                    <a
-                      href="https://sites.google.com/view/wicvworkshop-cvpr2020/program/poster-presentations"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="relative z-10 mt-4 inline-block text-sm font-semibold text-[#A45236] transition hover:opacity-70"
-                    >
-                      Women in Computer Vision @ CVPR 2020 · Poster ↗
-                    </a>
+                    
                   </div>
 
                       <h3 className="mt-4 font-semibold">
@@ -390,18 +393,16 @@ export default function Home() {
                         Representation learning for robotic grasp detection.
                       </p>
 
-                      <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-[#E6DAD2] pt-4">
-                        <a
-                          href="https://ieeexplore.ieee.org/document/9179578"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-sm font-semibold text-[#A45236] transition hover:opacity-70"
-                        >
-                          Paper ↗
-                        </a>
-                      </div>
-
-                    </div>
+                    <a
+                      href="https://sites.google.com/view/wicvworkshop-cvpr2020/program/poster-presentations"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pointer-events-auto mt-5 inline-block text-sm font-medium text-[#4E7466] transition hover:text-[#A45236]"
+                    >
+                      Women in Computer Vision @ CVPR 2020 — Poster ↗
+                    </a>
+                  </div>
+                </div>
 
                       <a
                         href="https://sites.google.com/view/wicvworkshop-cvpr2020/program/poster-presentations"
