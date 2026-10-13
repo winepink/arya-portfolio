@@ -549,7 +549,7 @@ export default function Home() {
 
                         <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
                           <span className="rounded-lg bg-[#F0E5D2] px-3 py-1.5 text-xs font-semibold text-[#806234]">
-                            ~9K RPM
+                            2x growth
                           </span>
 
                           <span className="text-xs text-[#756359] transition group-open:rotate-180">
@@ -563,11 +563,11 @@ export default function Home() {
                       </summary>
 
                       <div className="mt-5 border-t border-[#E6DAD2] pt-5 text-sm leading-7 text-[#65554C]">
-                        Built marketplace backend services handling roughly
-                        9K requests per minute and supporting growth in sellers
-                        and serviceable areas. Also built CDC-based streaming
-                        pipelines from SQL Server through Debezium, Pub/Sub, and
-                        Dataflow into BigQuery for downstream analytics.
+                        Built marketplace backend services that helped support
+                        2x growth in sellers and serviceable areas. Also built
+                        CDC-based streaming pipelines from SQL Server through
+                        Debezium, Pub/Sub, and Dataflow into BigQuery for
+                        downstream analytics.
                       </div>
                     </details>
                   </div>
