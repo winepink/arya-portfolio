@@ -6,6 +6,7 @@ import {
   BookOpenCheck,
   Boxes,
   BrainCircuit,
+  ChevronDown,
   Coffee,
   DatabaseZap,
   FileText,
@@ -20,14 +21,87 @@ import {
   ServerCog,
 } from "lucide-react";
 
-type Tab = "about" | "education" | "experience" | "research" | "writing";
+type Tab = "about" | "education" | "experience" | "research" | "projects" | "writing";
 
 const tabs: { id: Tab; label: string }[] = [
   { id: "experience", label: "About" },
   { id: "education", label: "Education" },
   { id: "research", label: "Research" },
+  { id: "projects", label: "Projects" },
   { id: "writing", label: "Writing & Teaching" },
   { id: "about", label: "Personal" },
+];
+
+const umassCoursework = [
+  {
+    term: "Fall 2026",
+    status: "In progress",
+    courses: [
+      { code: "COMPSCI 661", title: "Secure Distributed Systems", description: "Security and trust in systems spanning multiple machines." },
+      { code: "COMPSCI 520", title: "Theory and Practice of Software Engineering", description: "Principles and practices for designing and maintaining software." },
+      { code: "COMPSCI 660", title: "Advanced Information Assurance", description: "Advanced approaches to protecting information and computing systems." },
+    ],
+  },
+  {
+    term: "Spring 2026",
+    status: "Completed",
+    courses: [
+      { code: "COMPSCI 561", title: "System Defense and Test", description: "Defending systems and testing their security." },
+      { code: "COMPSCI 546", title: "Applied Information Retrieval", description: "Methods for finding and ranking relevant information." },
+      { code: "COMPSCI 690AB", title: "Systems for Deep Learning", description: "Systems techniques for efficient deep learning computation." },
+    ],
+  },
+  {
+    term: "Fall 2025",
+    status: "Completed",
+    courses: [
+      { code: "COMPSCI 589", title: "Machine Learning", description: "Methods for learning patterns from data and evaluating predictions." },
+      { code: "COMPSCI 685", title: "Advanced Natural Language Processing", description: "Advanced methods for modeling and understanding human language." },
+      { code: "COMPSCI 532", title: "Systems for Data Science", description: "Computing systems for processing and analyzing data at scale." },
+    ],
+  },
+];
+
+const selectedProjects = [
+  {
+    name: "Flash Attention",
+    category: "GPU kernels & ML systems",
+    repo: "flash_attention",
+    description: "Exploring how attention kernels use GPU compute and memory, from tiled forward passes and online softmax to backward-pass validation and roofline analysis.",
+    detail: "Triton/PyTorch kernel experiments and JAX/Pallas benchmarks connect low-level performance with GPT-2 training workloads. Collaborative work; individual contributions are recorded in the repository.",
+    highlight: "6.63x forward speedup at sequence length 8,192",
+    context: "Recorded A100 notebook benchmark against the reference implementation; performance varies by shape and kernel.",
+    skills: ["Triton", "JAX / Pallas", "PyTorch", "GPU profiling"],
+    image: "/flash-attention-benchmark.png",
+    alt: "Recorded Triton and reference forward-pass runtime and peak memory across sequence lengths",
+    caption: "Forward-pass runtime and peak allocated memory from the project notebooks.",
+  },
+  {
+    name: "SimuFed",
+    category: "Distributed analytics & fault simulation",
+    repo: "SimuFed",
+    description: "A Python simulation of federated analytics: clients compute local statistics, then share summaries with a coordinator rather than centralizing raw data.",
+    detail: "Compares synchronous and asynchronous aggregation under client delays and dropouts. Multiprocessing, configurable faults, and experiment sweeps make the latency and completeness tradeoffs visible.",
+    highlight: "Two aggregation strategies. One fault-injection workflow.",
+    context: "A local simulation of distributed analytics, with CSV results and plotting scripts for repeatable comparisons.",
+    skills: ["Python", "Multiprocessing", "NumPy", "Distributed aggregation"],
+    image: "/simufed-runtime.png",
+    alt: "SimuFed experiment comparing synchronous and asynchronous round duration as client dropout probability increases",
+    caption: "Recorded runtime comparison under simulated client dropouts.",
+  },
+  {
+    name: "llm-check",
+    category: "Evaluation tooling · Early-stage project",
+    repo: "llm-check",
+    description: "A small TypeScript CLI for checking saved LLM classification outputs against expected labels, with readable failures and machine-readable JSON reports.",
+    detail: "Validates case files, normalizes labels, and returns distinct exit codes for passing evaluations, mismatches, and runner errors. It evaluates saved outputs; model API calls and semantic grading are not implemented yet.",
+    highlight: "Repeatable checks without another inference run.",
+    context: "Designed as a focused starting point for output regression checks.",
+    skills: ["TypeScript", "Node.js", "CLI tooling", "Exact-match evaluation"],
+    image: null,
+    alt: "",
+    caption: "Bundled example: two matching labels and one intentional mismatch.",
+  },
 ];
 
 export default function Home() {
@@ -84,7 +158,7 @@ export default function Home() {
           </p>
 
           <p className="mt-1 text-sm font-medium leading-6 !text-[#4A3E36]">
-            Distributed Systems · Cloud Infrastructure · Networking
+            Distributed Systems · Cloud Infrastructure · AI Infrastructure · Networking
           </p>
 
           <div className="my-6 h-px bg-[#E7D9CF]" />
@@ -161,18 +235,19 @@ export default function Home() {
         {/* MAIN WINDOW */}
         <section className="overflow-hidden rounded-[28px] border border-[#DECFC3] bg-[#FFF9F2] shadow-[0_20px_50px_rgba(70,48,35,0.08)]">
           {/* WINDOW BAR */}
-          <div className="relative flex items-center justify-center border-b border-[#E5D6CA] px-5 py-4 md:px-6">
-            <div className="absolute left-5 flex gap-2 md:left-6">
+          <div className="relative flex flex-col items-center justify-center gap-3 border-b border-[#E5D6CA] px-5 py-4 md:px-6 xl:flex-row">
+            <div className="flex gap-2 self-start xl:absolute xl:left-6 xl:self-auto">
               <div className="h-3 w-3 rounded-full bg-[#C8725A]" />
               <div className="h-3 w-3 rounded-full bg-[#D4A55E]" />
               <div className="h-3 w-3 rounded-full bg-[#7A9A87]" />
             </div>
 
-            <nav className="flex max-w-[calc(100%-5rem)] flex-wrap justify-center gap-1.5 md:flex-nowrap md:gap-2">
+            <nav aria-label="Portfolio sections" className="flex w-full flex-wrap justify-center gap-1.5 md:gap-2 xl:px-16">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
+                  aria-current={activeTab === tab.id ? "page" : undefined}
                   className={`whitespace-nowrap rounded-xl px-2.5 py-2 text-xs font-medium transition md:px-4 md:text-sm ${
                     activeTab === tab.id
                       ? "bg-[#A45236] text-white"
@@ -265,7 +340,7 @@ export default function Home() {
                         Software Development Engineer
                       </p>
                       <p className="text-[10px] font-semibold uppercase leading-5 tracking-[0.16em] text-[#7A675B]">
-                        Distributed Systems · Cloud Infrastructure · Networking
+                        Distributed Systems · Cloud Infrastructure · AI Infrastructure · Networking
                       </p>
                     </div>
 
@@ -733,49 +808,41 @@ export default function Home() {
                         </div>
                       </div>
 
-                      <div className="mt-6 grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
-                        <div className="rounded-xl border border-[#E8DCD3] bg-white/75 p-4">
-                          <div className="flex items-center gap-2">
-                            <BookOpenCheck size={17} className="text-[#A45236]" />
-                            <h4 className="text-sm font-semibold uppercase tracking-[0.12em] text-[#7A675B]">
-                              Coursework
-                            </h4>
-                          </div>
+                      <p className="mt-5 text-sm leading-6 text-[#62534B]">
+                        Graduate study spanning distributed systems, networking,
+                        machine learning infrastructure, and security.
+                      </p>
 
-                          <div className="mt-3 flex flex-wrap gap-2">
-                            {[
-                              "Machine Learning",
-                              "Advanced NLP",
-                              "Systems for Data Science",
-                              "System Defense and Test",
-                              "Applied Information Retrieval",
-                              "Systems for Deep Learning",
-                            ].map((course) => (
-                              <span
-                                key={course}
-                                className="rounded-full border border-[#E1D4CA] bg-[#FFF9F2] px-3 py-1 text-xs font-medium text-[#65554C]"
-                              >
-                                {course}
-                              </span>
-                            ))}
-                          </div>
+                      <details className="group mt-5 border-t border-[#E2D3C8]">
+                        <summary className="flex cursor-pointer list-none items-center gap-3 py-4 text-[#2A211B] outline-none focus-visible:ring-2 focus-visible:ring-[#A45236] focus-visible:ring-offset-4 [&::-webkit-details-marker]:hidden">
+                          <BookOpenCheck size={19} aria-hidden="true" className="shrink-0 text-[#A45236]" />
+                          <span className="min-w-0 flex-1 font-semibold">Coursework</span>
+                          <span className="hidden text-xs text-[#62534B] sm:inline">Completed & in progress</span>
+                          <ChevronDown size={18} aria-hidden="true" className="shrink-0 transition-transform group-open:rotate-180" />
+                        </summary>
+
+                        <div className="space-y-7 pb-2 pt-2">
+                          {umassCoursework.map(({ term, status, courses }) => (
+                            <section key={term} aria-label={`${term} coursework`}>
+                              <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+                                <h4 className="text-sm font-semibold text-[#2A211B]">{term}</h4>
+                                <span className={`text-xs font-medium ${status === "In progress" ? "text-[#4E7466]" : "text-[#62534B]"}`}>{status}</span>
+                              </div>
+                              <ul className="divide-y divide-[#E8DCD3]">
+                                {courses.map(({ code, title, description }) => (
+                                  <li key={code} className="grid gap-1 py-3 md:grid-cols-[140px_minmax(0,1fr)] md:gap-4">
+                                    <p className="pt-0.5 font-mono text-xs font-medium leading-6 text-[#8F452F]">{code}</p>
+                                    <div className="min-w-0">
+                                      <p className="text-base font-medium leading-6 text-[#2A211B]">{title}</p>
+                                      <p className="mt-1 text-sm leading-6 text-[#62534B]">{description}</p>
+                                    </div>
+                                  </li>
+                                ))}
+                              </ul>
+                            </section>
+                          ))}
                         </div>
-
-                        <div className="rounded-xl border border-[#D9CABC] bg-[#FBF4ED] p-4">
-                          <div className="flex items-center gap-2">
-                            <GraduationCap size={18} className="text-[#4E7466]" />
-                            <h4 className="text-sm font-semibold uppercase tracking-[0.12em] text-[#7A675B]">
-                              Focus
-                            </h4>
-                          </div>
-
-                          <p className="mt-3 text-sm leading-6 text-[#62534B]">
-                            Applied ML and scalable systems: building ML
-                            infrastructure and big data pipelines using Spark,
-                            Hadoop, and distributed computing frameworks.
-                          </p>
-                        </div>
-                      </div>
+                      </details>
                     </article>
 
                     <article className="relative overflow-hidden rounded-2xl border border-[#E2D3C8] bg-[#FFFDF9] p-5 shadow-sm md:p-6">
@@ -985,6 +1052,58 @@ export default function Home() {
                 </div>
 
               </div>
+            )}
+
+            {/* PROJECTS */}
+            {activeTab === "projects" && (
+              <section className="animate-fade" aria-labelledby="projects-title">
+                <header className="text-center">
+                  <p className="text-xs font-semibold uppercase text-[#A45236]">Selected projects</p>
+                  <h2 id="projects-title" className="mt-3 text-3xl font-semibold leading-tight md:text-4xl">
+                    Systems behind the workload.
+                  </h2>
+                  <p className="mx-auto mt-4 max-w-3xl text-base leading-7">
+                    GPU performance, distributed computation, and evaluation tooling
+                    for infrastructure and machine learning systems.
+                  </p>
+                </header>
+
+                <div className="mt-8 divide-y divide-[#E2D3C8]">
+                  {selectedProjects.map((project) => (
+                    <article key={project.repo} className="grid min-w-0 gap-6 py-8 first:pt-0 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] xl:gap-8">
+                      <div className="min-w-0">
+                        <p className="text-xs font-semibold text-[#4E7466]">{project.category}</p>
+                        <h3 className="mt-2 text-2xl font-semibold">{project.name}</h3>
+                        <p className="mt-4 text-base leading-7">{project.description}</p>
+                        <p className="mt-3 text-sm leading-6">{project.detail}</p>
+                        <div className="mt-5 border-l-2 border-[#4E7466] pl-4">
+                          <p className="text-sm font-semibold">{project.highlight}</p>
+                          <p className="mt-1 text-xs leading-5">{project.context}</p>
+                        </div>
+                        <ul aria-label={`${project.name} technologies`} className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-xs font-medium text-[#4E7466]">
+                          {project.skills.map((skill) => <li key={skill}>{skill}</li>)}
+                        </ul>
+                        <a href={`https://github.com/winepink/${project.repo}`} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#A45236] underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4">
+                          View repository <ArrowUpRight size={16} aria-hidden="true" />
+                        </a>
+                      </div>
+                      <figure className="min-w-0 self-start">
+                        {project.image ? (
+                          <a href={`https://github.com/winepink/${project.repo}`} target="_blank" rel="noopener noreferrer" className="block border border-[#E2D3C8] bg-white p-2">
+                            <img src={project.image} alt={project.alt} className="h-auto w-full object-contain" loading="lazy" />
+                          </a>
+                        ) : (
+                          <div className="overflow-hidden rounded-lg border border-[#CDDCD6] bg-[#14251F] text-[#E4EFE9]">
+                            <div className="border-b border-white/15 px-4 py-3 font-mono text-xs">llm-check / eval-cases.json</div>
+                            <pre className="overflow-x-auto p-4 text-xs leading-7 sm:text-sm"><code>{"$ npm run eval -- eval-cases.json\n\nPASS positive sentiment\nPASS negative sentiment\nFAIL neutral sentiment\n  expected=\"neutral\" actual=\"positive\"\n\n2/3 passed\nexit code: 1"}</code></pre>
+                          </div>
+                        )}
+                        <figcaption className="mt-3 text-xs leading-5 text-[#62534B]">{project.caption}</figcaption>
+                      </figure>
+                    </article>
+                  ))}
+                </div>
+              </section>
             )}
 
             {/* WRITING */}
