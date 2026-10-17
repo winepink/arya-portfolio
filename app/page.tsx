@@ -23,6 +23,8 @@ import {
 
 type Tab = "about" | "education" | "experience" | "research" | "projects" | "writing";
 
+const scholarUrl = "https://scholar.google.com/citations?user=6aBLoXgAAAAJ&hl=en";
+
 const tabs: { id: Tab; label: string }[] = [
   { id: "experience", label: "About" },
   { id: "education", label: "Education" },
@@ -224,6 +226,16 @@ export default function Home() {
               </span>
               LinkedIn
             </a>
+
+            <a
+              href={scholarUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 rounded-xl border border-[#D8C6B8] bg-white px-4 py-3 text-sm font-medium text-[#493A31] transition hover:bg-[#FFF2E8]"
+            >
+              <GraduationCap size={17} aria-hidden="true" className="shrink-0" />
+              Google Scholar
+            </a>
           </div>
 
           <div className="mt-7 flex items-center gap-2 text-sm text-[#8C7567]">
@@ -408,6 +420,16 @@ export default function Home() {
                       >
                         <GitFork size={14} />
                         GitHub
+                      </a>
+
+                      <a
+                        href={scholarUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full border border-[#D8C6B8] bg-white/80 px-3 py-2 text-xs font-semibold text-[#5B4B43] transition hover:border-[#A45236] hover:text-[#A45236]"
+                      >
+                        <GraduationCap size={14} aria-hidden="true" />
+                        Google Scholar
                       </a>
                     </div>
                   </div>
@@ -973,6 +995,17 @@ export default function Home() {
                   machine learning, distributed computation, and representation
                   learning.
                 </p>
+
+                <a
+                  href={scholarUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#A45236] underline-offset-4 hover:underline"
+                >
+                  <GraduationCap size={17} aria-hidden="true" />
+                  Publications on Google Scholar
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
 
                 <div className="mt-9 grid gap-5 md:grid-cols-2">
 
